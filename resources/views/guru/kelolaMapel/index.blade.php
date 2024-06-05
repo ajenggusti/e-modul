@@ -5,12 +5,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Kelola Jawaban</h1>
+        <h1 class="m-0">Kelola mata Pelajaran</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="/dbGuru">Dashboard</a></li>
-          <li class="breadcrumb-item active">Kelola Jawaban</li>
+          <li class="breadcrumb-item active">Kelola Mata Pelajaran</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -37,9 +37,9 @@
         <thead>
           <tr>
             <th>id</th>
-            <th>pertanyaan</th>
-            <th>kunci</th>
-            <th>meteri</th>
+            <th>Mata Pelajaran</th>
+            <th>Guru</th>
+            <th>Gambar Sampul</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -47,8 +47,9 @@
           @foreach ($datas as $data)
             <tr>
               <td>{{ $data->id }}</td>
-              <td>{{ $data->pertanyaan }}</td>
-              <td>{{ $data->kunci }}</td>
+              <td>{{ $data->mapel }}</td>
+              <td>{{ $data->user->nama }}</td>
+              <td>{{ $data->gambar }}</td>
               <td>
                   <div class="action-buttons">
                       <a href="/user/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>

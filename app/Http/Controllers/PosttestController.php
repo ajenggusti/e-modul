@@ -13,8 +13,9 @@ class PosttestController extends Controller
     public function index()
     {
         $datas = Posttest::get();
+        // dd($datas);
         return view('guru.kelolaPostTest.index', [
-            'datas'=>$datas
+            'datas' => $datas
         ]);
     }
 

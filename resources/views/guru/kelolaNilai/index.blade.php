@@ -33,6 +33,9 @@
           <tr>
             <th>id</th>
             <th>Nama</th>
+            <th>Mapel</th>
+            <th>Materi</th>
+            <th>Nilai</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -40,7 +43,10 @@
           @foreach ($datas as $data)
             <tr>
               <td>{{ $data->id }}</td>
-              <td>{{ $data->user->nama }}</td>
+              <td>{{ $data->user->nama}}</td>
+              <td>{{ $data->materi->mapel->mapel }}</td>
+              <td>{{ $data->materi->nama_materi}}</td>
+              <td>{{ $data->nilai}}</td>
               <td>
                   <div class="action-buttons">
                       <a href="/user/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>

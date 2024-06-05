@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('nilai', function (Blueprint $table) {
             $table->id();
             $table->string('nilai')->nullable();
-            $table->unsignedBigInteger('id_mapel')->nullable();
+            $table->unsignedBigInteger('id_materi')->nullable();
             $table->unsignedBigInteger('id_user')->nullable();
             $table->timestamps();
-            $table->foreign('id_mapel')->references('id')->on('mapel')->onDelete('cascade');
+            $table->foreign('id_materi')->references('id')->on('materi')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }

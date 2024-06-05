@@ -14,4 +14,7 @@ class Nilai extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
+    public function materi(){
+        return $this->belongsTo(Materi::class, 'id_materi');
+    }
 }

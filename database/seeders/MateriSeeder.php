@@ -15,6 +15,7 @@ class MateriSeeder extends Seeder
     {
         DB::table('materi')->insert([
             [
+                'nama_materi'=>'bab 1',
                 'link_yt' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/PB0-CXA6Myw?si=sFFqVzoHl8ohzXpo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
                 'file'=>'file',
                 'materi'=>'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel quia praesentium aperiam magnam? Laborum quo illo fuga sint laudantium aliquid?',

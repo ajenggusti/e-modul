@@ -41,7 +41,7 @@
             <th>Nama</th>
             <th>Email</th>
             <th>Level</th>
-            <th>Level</th>
+            <th>Absen</th>
             <th>NIP</th>
             <th>Action</th>
           </tr>

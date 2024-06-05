@@ -41,4 +41,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Nilai::class, 'id_user');
     }
+
+    public function mapel()
+    {
+        return $this->hasMany(Mapel::class, 'id_user');
+    }
+    public function jawaban()
+    {
+        return $this->hasMany(Jawaban::class, 'id_user');
+    }
+    public function pretest(){
+        return $this->hasMany(Pretest::class, 'id_user');
+
+    }
+    
+
 }

@@ -15,7 +15,7 @@ class JawabanSeeder extends Seeder
     {
         DB::table('jawaban')->insert([
             [
-                'jawaban' => 'TKJ',
+                'jawaban' => 'a',
                 'status'=>'benar',
                 'id_user'=>'2',
                 'id_post_test'=>'1'

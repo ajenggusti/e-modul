@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('materi', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_materi')->nullable();
             $table->longText('link_yt')->nullable();
             $table->longText('file')->nullable();
             $table->longText('materi')->nullable();

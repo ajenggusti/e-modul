@@ -5,12 +5,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Kelola Pre Test</h1>
+        <h1 class="m-0">Kelola Pre-Test</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="/dbGuru">Dashboard</a></li>
-          <li class="breadcrumb-item active">Kelola Post Test</li>
+          <li class="breadcrumb-item active">Kelola Pre-Test</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -35,11 +35,12 @@
     <div class="card-body">
       <table id="example1" class="table table-bordered table-striped">
         <thead>
-          <tr>
+          <tr>            
             <th>id</th>
-            <th>pertanyaan</th>
-            <th>kunci</th>
-            <th>meteri</th>
+            <th>Nama</th>
+            <th>Mata Pelajaran</th>
+            <th>Materi</th>
+            <th>Jawaban Pretest</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -47,8 +48,10 @@
           @foreach ($datas as $data)
             <tr>
               <td>{{ $data->id }}</td>
-              <td>{{ $data->pertanyaan }}</td>
-              <td>{{ $data->kunci }}</td>
+              <td>{{ $data->user->nama }}</td>
+              <td>{{ $data->materi->mapel->mapel }}</td>
+              <td>{{ $data->materi->nama_materi }}</td>
+              <td>{{ $data->jawaban }}</td>
               <td>
                   <div class="action-buttons">
                       <a href="/user/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>

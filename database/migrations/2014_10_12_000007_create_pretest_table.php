@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('jawaban')->nullable();
             $table->unsignedBigInteger('id_user')->nullable();
-            $table->unsignedBigInteger('id_mapel')->nullable();
+            $table->unsignedBigInteger('id_materi')->nullable();
             $table->unsignedBigInteger('id_feedback')->nullable();
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_mapel')->references('id')->on('mapel')->onDelete('cascade');
+            $table->foreign('id_materi')->references('id')->on('materi')->onDelete('cascade');
             $table->foreign('id_feedback')->references('id')->on('feedback')->onDelete('cascade');
 
         });

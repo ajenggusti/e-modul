@@ -39,7 +39,8 @@
             <th>id</th>
             <th>pertanyaan</th>
             <th>kunci</th>
-            <th>meteri</th>
+            <th>Mata pelajaran</th>
+            <th>Materi</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -49,6 +50,8 @@
               <td>{{ $data->id }}</td>
               <td>{{ $data->pertanyaan }}</td>
               <td>{{ $data->kunci }}</td>
+              <td>{{ $data->materi->mapel->mapel }}</td>
+              <td>{{ $data->materi->nama_materi }}</td>
               <td>
                   <div class="action-buttons">
                       <a href="/user/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>

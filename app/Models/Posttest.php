@@ -9,4 +9,13 @@ class Posttest extends Model
 {
     use HasFactory;
     protected $table = 'posttest';
+
+    public function materi()
+    {
+        return $this->belongsTo(Materi::class, 'id_materi');
+    }
+    public function jawaban()
+    {
+        return $this->hasMany(Jawaban::class, 'id_post_test');
+    }
 }

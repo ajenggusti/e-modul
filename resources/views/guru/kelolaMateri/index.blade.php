@@ -37,9 +37,11 @@
         <thead>
           <tr>
             <th>id</th>
-            <th>pertanyaan</th>
-            <th>kunci</th>
-            <th>meteri</th>
+            <th>Nama Materi </th>
+            <th>Mata Pelajaran </th>
+            <th>Video Pembelajaran</th>
+            <th>File</th>
+            <th>Materi</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -47,8 +49,11 @@
           @foreach ($datas as $data)
             <tr>
               <td>{{ $data->id }}</td>
-              <td>{{ $data->pertanyaan }}</td>
-              <td>{{ $data->kunci }}</td>
+              <td>{{ $data->nama_materi }}</td>
+              <td>{{ $data->mapel->mapel }}</td>
+              <td>{!! $data->link_yt !!}</td>
+              <td>{{ $data->file }}</td>
+              <td>{{ $data->materi }}</td>
               <td>
                   <div class="action-buttons">
                       <a href="/user/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>
