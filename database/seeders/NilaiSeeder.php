@@ -15,7 +15,7 @@ class NilaiSeeder extends Seeder
     {
         DB::table('nilai')->insert([
             [
-                'nilai' => "Apa itu apel?",
+                'nilai' => "90",
                 'id_mapel'=>1,
                 'id_user'=>2,
             ],

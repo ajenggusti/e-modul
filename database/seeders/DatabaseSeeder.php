@@ -14,13 +14,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            PretestSeeder::class,
-            PosttestSeeder::class,
+            MapelSeeder::class,
             NilaiSeeder::class,
             MateriSeeder::class,
-            MapelSeeder::class,
-            JawabanSeeder::class,
             FeedbackSeeder::class,
+            PosttestSeeder::class,
+            JawabanSeeder::class,
+            PretestSeeder::class,
         ]);
     }
 }
