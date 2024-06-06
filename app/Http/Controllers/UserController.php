@@ -17,7 +17,7 @@ class UserController extends Controller
         // dd($datas);
         return view('guru.kelolaUser.index', [
             'datas' => $datas,
-            'tab'=>$tab
+            'tab' => $tab
         ]);
     }
 

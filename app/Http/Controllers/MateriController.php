@@ -14,7 +14,7 @@ class MateriController extends Controller
     {
         $datas = Materi::get();
         return view('guru.kelolaMateri.index', [
-            'datas'=>$datas
+            'datas' => $datas
         ]);
     }
 
@@ -23,7 +23,7 @@ class MateriController extends Controller
      */
     public function create()
     {
-        //
+        return view('guru.kelolaMateri.form');
     }
 
     /**

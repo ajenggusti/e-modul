@@ -28,7 +28,7 @@
 </div>
 
 @endif
-<a href="/kelKatDiklat/create" class="btn btn-primary"> <i class="bi bi-plus-lg"></i> Tambah Data</a>
+<a href="/kelMateri/create" class="btn btn-primary"> <i class="bi bi-plus-lg"></i> Tambah Data</a>
 <br> <br>
 <div class="card">
     <!-- /.card-header -->

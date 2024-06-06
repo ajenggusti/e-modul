@@ -11,6 +11,7 @@ use App\Http\Controllers\PretestController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PosttestController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\NilaiController;
 
 /*
@@ -38,3 +39,6 @@ Route::resource('/kelMateri', MateriController::class);
 Route::resource('/kelPostTest', PosttestController::class);
 Route::resource('/kelPretest', PretestController::class);
 Route::resource('/kelMapel', MapelController::class);
+
+
+Route::get('/', [LandingPageController::class, 'index']);
