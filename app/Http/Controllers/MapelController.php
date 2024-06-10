@@ -14,7 +14,7 @@ class MapelController extends Controller
     {
         $datas = Mapel::get();
         return view('guru.kelolaMapel.index', [
-            'datas'=>$datas
+            'datas' => $datas
         ]);
     }
 
@@ -23,7 +23,7 @@ class MapelController extends Controller
      */
     public function create()
     {
-        //
+        return view('guru.kelolaMapel.form');
     }
 
     /**
@@ -31,7 +31,25 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the input
+        $request->validate([
+            'mapel' => 'required|string|max:255',
+            'gbr' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('gbr')) {
+                $filePath = public_path('storage/' . $request->gbr);
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+            $image = "gambars/" . time() . '-' . uniqid() . '.' . $request->gbr->getClientOriginalExtension();
+            $request->gbr->move('storage/gambars', $image);
+            $mapel=new Mapel();
+            $mapel->gambar = $image;
+            $mapel->save();
+        }
+
+        return redirect()->back()->with('success', 'Data berhasil disimpan.');
     }
 
     /**

@@ -24,7 +24,7 @@ class PosttestController extends Controller
      */
     public function create()
     {
-        //
+        return view('guru.kelolaPostTest.form');
     }
 
     /**

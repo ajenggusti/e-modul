@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Kelola mata Pelajaran</h1>
+        <h1 class="m-0">Kelola Mata Pelajaran</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -17,26 +17,22 @@
   </div><!-- /.container-fluid -->
 </div>
 
-
-
-
-
-@if (session('success') )
+@if (session('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     {{ session('success') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-
 @endif
-<a href="/kelKatDiklat/create" class="btn btn-primary"> <i class="bi bi-plus-lg"></i> Tambah Data</a>
-<br> <br>
+
+<a href="/kelMapel/create" class="btn btn-primary"> <i class="bi bi-plus-lg"></i> Tambah Data</a>
+<br><br>
+
 <div class="card">
-    <!-- /.card-header -->
     <div class="card-body">
       <table id="example1" class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>id</th>
+            <th>ID</th>
             <th>Mata Pelajaran</th>
             <th>Guru</th>
             <th>Gambar Sampul</th>
@@ -45,28 +41,29 @@
         </thead>
         <tbody>
           @foreach ($datas as $data)
-            <tr>
-              <td>{{ $data->id }}</td>
-              <td>{{ $data->mapel }}</td>
-              <td>{{ $data->user->nama }}</td>
-              <td>{{ $data->gambar }}</td>
-              <td>
-                  <div class="action-buttons">
-                      <a href="/user/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>
-                      <form action="/user/{{ $data->id }}" method="POST">
-                          @method('DELETE')
-                          @csrf
-                          <button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')"><i class="bi bi-trash"></i> Delete</button>
-                      </form>
-                  </div>
-              </td>
-            </tr>
+              <tr>
+                  <td>{{ $data->id }}</td>
+                  <td>{{ $data->mapel }}</td>
+                  <td>{{ $data->user->nama }}</td>
+                  <td><img src="{{ asset('storage/' . $data->gambar) }}" alt="Nama Gambar"></td>
+                  <td>
+                      <div class="action-buttons d-flex">
+                          <a href="/kelMapel/{{ $data->id }}/edit" class="btn btn-success me-2"><i class="bi bi-pencil-square"></i> Edit</a>
+                          <form action="/kelMapel/{{ $data->id }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
+                              @method('DELETE')
+                              @csrf
+                              <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                          </form>
+                      </div>
+                  </td>
+              </tr>
           @endforeach
-          
+      </tbody>
+      
 
-        </tfoot>
       </table>
     </div>
     <!-- /.card-body -->
-  </div>
+</div>
+
 @endsection

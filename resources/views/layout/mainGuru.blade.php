@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="{{ asset('lte/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('lte/plugins/summernote/summernote-bs4.min.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
   {{-- ////////// --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -205,15 +206,39 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
             <a href="/kelUser" class="nav-link">
-              <i class="bi bi-list-columns-reverse"></i>
+              <i class="nav-icon fa-solid fa-users-gear"></i>
               <p>
                 Kelola User
               </p>
             </a>
           </li>
           <li class="nav-item">
+            <a href="/kelMapel" class="nav-link">
+              <i class="fa-solid fa-brain"></i>
+              <p>
+                Kelola Mata Pelajaran
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/kelMateri" class="nav-link">
+              <i class="fa-solid fa-book"></i>
+              <p>
+                Kelola Materi
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/kelPretest" class="nav-link">
+              <i class="fa-regular fa-file-powerpoint"></i>
+              <p>
+                Kelola Pretest
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/kelPosttest" class="nav-link">
-              <i class="bi bi-list-columns-reverse"></i>
+              <i class="fa-solid fa-circle-question"></i>
               <p>
                 Kelola Post Test
               </p>
@@ -221,36 +246,14 @@
           </li>
           <li class="nav-item">
             <a href="/laporan" class="nav-link">
-              <i class="bi bi-file-earmark-break-fill"></i>
+              <i class="fa-solid fa-file-csv"></i>
               <p>
                 Laporan Nilai
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/kelMateri" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
-              <p>
-                Kelola Materi
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/kelMapel" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
-              <p>
-                Kelola Mata Pelajaran
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/kelPretest" class="nav-link">
-              <i class="nav-icon far fa-list-alt"></i>
-              <p>
-                Kelola Pretest
-              </p>
-            </a>
-          </li>
+
+
 
         </ul>
       </nav>

@@ -1,84 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- ===== CSS ===== -->
-        <link rel="stylesheet" href="{{ asset('login/assets/css/styles.css') }}">
-    
-        <!-- ===== BOX ICONS ===== -->
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Responsive Login Form Sign In Sign Up</title>
-    </head>
-    <body>
-        <div class="login">
-            <div class="login__content">
-                <div class="login__img">
-                    <img src="{{ asset('login/assets/img/img-login.svg') }}" alt="">
+    <!-- link css  -->
+    <link rel="stylesheet" href="style/login-theme.css">
+
+    <!-- icons  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <title>Login</title>
+</head>
+
+<body>
+    <div class=" flex-r container">
+        <div class="flex-r login-wrapper">
+            <div class="login-text">
+                <div class="logo">
+                    <img src="{{ asset('img/logo.jpg') }}" alt="">
+                    <p>E-MODUL</p>
                 </div>
+                <h1>Register</h1>
 
-                <div class="login__forms">
-                    <form action="" class="login__registre" id="login-in">
-                        <h1 class="login__title">Sign In</h1>
-    
-                        <div class="login__box">
-                            <i class='bx bx-user login__icon'></i>
-                            <input type="text" placeholder="Username" class="login__input">
+                <form class="flex-c">
+                    <div class="input-box">
+                        <span class="label">E-mail</span>
+                        <div class=" flex-r input">
+                            <input type="text" placeholder="name@abc.com">
+                            <i class="fas fa-at"></i>
                         </div>
-    
-                        <div class="login__box">
-                            <i class='bx bx-lock-alt login__icon'></i>
-                            <input type="password" placeholder="Password" class="login__input">
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="label">Password</span>
+                        <div class="flex-r input">
+                            <input type="password" placeholder="8+ (a, A, 1, #)">
+                            <i class="fas fa-lock"></i>
                         </div>
-
-                        <a href="#" class="login__forgot">Forgot password?</a>
-
-                        <a href="#" class="login__button">Sign In</a>
-
-                        <div>
-                            <span class="login__account">Don't have an Account ?</span>
-                            <span class="login__signin" id="sign-up">Sign Up</span>
+                    </div>
+                    <div class="input-box">
+                        <span class="label">Konfirmasi Password</span>
+                        <div class="flex-r input">
+                            <input type="konfirm" placeholder="8+ (a, A, 1, #)">
+                            <i class="fas fa-lock"></i>
                         </div>
-                    </form>
+                    </div>
 
-                    <form action="" class="login__create none" id="login-up">
-                        <h1 class="login__title">Create Account</h1>
-    
-                        <div class="login__box">
-                            <i class='bx bx-user login__icon'></i>
-                            <input type="text" placeholder="Username" class="login__input">
-                        </div>
-    
-                        <div class="login__box">
-                            <i class='bx bx-at login__icon'></i>
-                            <input type="text" placeholder="Email" class="login__input">
-                        </div>
+                    <input class="btn" type="submit" value="Create an Account">
+                    <span class="extra-line">
+                        <span>Already have an account?</span>
+                        <a href="#">Login</a>
+                    </span>
+                </form>
 
-                        <div class="login__box">
-                            <i class='bx bx-lock-alt login__icon'></i>
-                            <input type="password" placeholder="Password" class="login__input">
-                        </div>
-
-                        <a href="#" class="login__button">Sign Up</a>
-
-                        <div>
-                            <span class="login__account">Already have an Account ?</span>
-                            <span class="login__signup" id="sign-in">Sign In</span>
-                        </div>
-
-                        <div class="login__social">
-                            <a href="#" class="login__social-icon"><i class='bx bxl-facebook' ></i></a>
-                            <a href="#" class="login__social-icon"><i class='bx bxl-twitter' ></i></a>
-                            <a href="#" class="login__social-icon"><i class='bx bxl-google' ></i></a>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
+    </div>
+</body>
 
-        <!--===== MAIN JS =====-->
-        <script src="{{ asset('login/assets/js/main.js') }}"></script>
-    </body>
 </html>
