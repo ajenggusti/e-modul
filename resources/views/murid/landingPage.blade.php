@@ -93,24 +93,30 @@
                 </div>
                 <div class="testimonial-wrapper">
                     <div class="testimonial-slider">
-                        <div class="testimonial-item">
+                        <div class="testimonial-container">
                             @foreach ($datas as $data)
-                                
+                            <div class="testimonial-item">
                                 <div class="client-profile d-flex align-items-center justify-content-between">
                                     <div class="d-flex align-items-center mb-20">
                                         <div class="gambarMapel">
-                                            <img src="{{ asset('img/tkj.jpg') }}" alt="client-image" />
+                                            <img src="{{ asset('storage/' . $data->gambar) }}" alt="client-image" />
                                         </div>
                                         <div class="client-name ml-2">
                                             <h6>{{ $data->mapel }}</h6>
                                             <span>{{ $data->user->nama }}</span>
                                         </div>
                                     </div>
+                                    
                                 </div>
-                            @endforeach
-                            
+                                <div class="d-flex">
+                                        <a href="/detailMapel/{{ $data->id }}" class="btn btn-primary">lihat</a>
+                                </div>
+                            </div>
+                        @endforeach
+                        
+                        
+
                         </div>
-                     
                     </div>
                     <div class="slider-arrows">
                         <div class="prev-arrow">

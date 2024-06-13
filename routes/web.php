@@ -42,7 +42,11 @@ Route::resource('/laporan', NilaiController::class);
 Route::resource('/kelMateri', MateriController::class);
 Route::resource('/kelMapel', MapelController::class);
 
-Route::get('/login', [LoginController::class,'index']);
+// Route::get('/login', [LoginController::class,'index']);
 
-
+// halaman home
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/detailMapel/{id}', [HomeController::class, 'detailMapel']);
+Route::get('/preMateriPost/{id}', [HomeController::class, 'preMateriPost'])->name('preMateriPost');
+Route::get('/aksesMateri/{id}', [HomeController::class, 'aksesMateri']);
+

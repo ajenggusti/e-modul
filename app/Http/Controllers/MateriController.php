@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mapel;
 use App\Models\Materi;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,10 @@ class MateriController extends Controller
      */
     public function create()
     {
-        return view('guru.kelolaMateri.form');
+        $mapels = Mapel::get();
+        return view('guru.kelolaMateri.form', [
+            'mapels' => $mapels
+        ]);
     }
 
     /**
@@ -31,8 +35,36 @@ class MateriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'namaMateri' => 'required|string|max:255',
+            'linkYt' => 'required|string',
+            'category' => 'required',
+            'materi' => 'nullable|string',
+            'file' => 'required|file|mimes:pdf,doc,docx|max:2048',
+        ]);
+    
+        if ($request->hasFile('file')) {
+            $filePath = public_path('storage/files/' . $request->file);
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+    
+            $fileName = time() . '-' . uniqid() . '.' . $request->file->getClientOriginalExtension();
+            $filePath = $request->file->move(public_path('storage/files'), $fileName);
+        }
+    
+        $materi = new Materi();
+        $materi->nama_materi = $validatedData['namaMateri'];
+        $materi->link_yt = $validatedData['linkYt'];
+        $materi->id_mapel = $validatedData['category'];
+        $materi->materi = $validatedData['materi'];
+        $materi->file = 'files/' . $fileName; 
+        $materi->save();
+    
+        return redirect('/kelMateri')->with('success', 'Materi created successfully!');
     }
+    
+    
 
     /**
      * Display the specified resource.

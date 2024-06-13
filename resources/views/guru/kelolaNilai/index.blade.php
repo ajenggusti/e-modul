@@ -24,8 +24,6 @@
 </div>
 @endif
 
-<a href="/kelKatDiklat/create" class="btn btn-primary"> <i class="bi bi-plus-lg"></i> Tambah Data</a>
-<br> <br>
 <div class="card">
     <div class="card-body">
       <table id="example1" class="table table-bordered table-striped">
@@ -49,8 +47,8 @@
               <td>{{ $data->nilai}}</td>
               <td>
                   <div class="action-buttons">
-                      <a href="/user/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>
-                      <form action="/user/{{ $data->id }}" method="POST">
+                      <a href="/laporan/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>
+                      <form action="/laporan/{{ $data->id }}" method="POST">
                           @method('DELETE')
                           @csrf
                           <button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')"><i class="bi bi-trash"></i> Delete</button>

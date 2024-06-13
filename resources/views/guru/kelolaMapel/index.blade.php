@@ -1,6 +1,6 @@
 @extends('layout.mainGuru')
 @section('content')
-
+<link href="/style/kelIndex.css" rel="stylesheet">
 <div class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
@@ -45,7 +45,7 @@
                   <td>{{ $data->id }}</td>
                   <td>{{ $data->mapel }}</td>
                   <td>{{ $data->user->nama }}</td>
-                  <td><img src="{{ asset('storage/' . $data->gambar) }}" alt="Nama Gambar"></td>
+                  <td><img class="gambar-mapel" src="{{ asset('storage/' . $data->gambar) }}" alt="Nama Gambar"></td>
                   <td>
                       <div class="action-buttons d-flex">
                           <a href="/kelMapel/{{ $data->id }}/edit" class="btn btn-success me-2"><i class="bi bi-pencil-square"></i> Edit</a>

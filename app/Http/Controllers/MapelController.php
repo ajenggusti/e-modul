@@ -46,6 +46,8 @@ class MapelController extends Controller
             $request->gbr->move('storage/gambars', $image);
             $mapel=new Mapel();
             $mapel->gambar = $image;
+            $mapel->mapel = $request->mapel;
+            $mapel->id_user = 1;
             $mapel->save();
         }
 

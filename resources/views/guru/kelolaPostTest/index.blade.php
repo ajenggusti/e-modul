@@ -54,8 +54,8 @@
               <td>{{ $data->materi->nama_materi }}</td>
               <td>
                   <div class="action-buttons">
-                      <a href="/user/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>
-                      <form action="/user/{{ $data->id }}" method="POST">
+                      <a href="/kelPosttest/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>
+                      <form action="/kelPosttest/{{ $data->id }}" method="POST">
                           @method('DELETE')
                           @csrf
                           <button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')"><i class="bi bi-trash"></i> Delete</button>

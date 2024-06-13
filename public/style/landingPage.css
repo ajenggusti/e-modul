@@ -29,3 +29,30 @@
     object-fit: cover;
 }
 
+
+
+/* /////// */
+/* Ensure your CSS includes these styles */
+.testimonial-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.testimonial-item {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    margin-right: 20px;
+}
+
+.slider-arrows {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
