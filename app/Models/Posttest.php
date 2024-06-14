@@ -9,6 +9,7 @@ class Posttest extends Model
 {
     use HasFactory;
     protected $table = 'posttest';
+    protected $guarded = [];
 
     public function materi()
     {

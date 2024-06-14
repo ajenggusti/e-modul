@@ -3,170 +3,145 @@
 
 <div class="content-header">
     <div class="container-fluid">
-    <div class="row mb-2">
-        <div class="col-sm-6">
-        <h1 class="m-0">Kelola Post Test</h1>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/dbGuru">Dashboard</a></li>
-            <li class="breadcrumb-item active">Kelola Post Test</li>
-        </ol>
-        </div><!-- /.col -->
-    </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-</div>   
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <style>
-        #container {
-            width: 1000px;
-            margin: 20px auto;
-        }
-        .ck-editor__editable[role="textbox"] {
-            /* Editing area */
-            min-height: 200px;
-        }
-        .ck-content .image {
-            /* Block images */
-            max-width: 80%;
-            margin: 20px auto;
-        }
-    </style>
-    <div id="container">
-        <div id="editor1"></div>
-        <div id="editor2"></div>
-        <div id="editor3"></div>
-        <div id="editor4"></div>
-        <div id="editor5"></div>
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Kelola Post Test</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/dbGuru">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Kelola Post Test</li>
+                </ol>
+            </div>
+        </div>
     </div>
-    <!--
-        The "superbuild" of CKEditor&nbsp;5 served via CDN contains a large set of plugins and multiple editor types.
-        See https://ckeditor.com/docs/ckeditor5/latest/installation/getting-started/quick-start.html#running-a-full-featured-editor-from-cdn
-    -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/super-build/ckeditor.js"></script>
-    <script>
-        // Configuration for CKEditor
-        const editorConfig = {
-            toolbar: {
-                items: [
-                    'exportPDF','exportWord', '|',
-                    'findAndReplace', 'selectAll', '|',
-                    'heading', '|',
-                    'bold', 'italic', 'strikethrough', 'underline', 'code', 'subscript', 'superscript', 'removeFormat', '|',
-                    'bulletedList', 'numberedList', 'todoList', '|',
-                    'outdent', 'indent', '|',
-                    'undo', 'redo',
-                    '-',
-                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
-                    'alignment', '|',
-                    'link', 'uploadImage', 'blockQuote', 'insertTable', 'mediaEmbed', 'codeBlock', 'htmlEmbed', '|',
-                    'specialCharacters', 'horizontalLine', 'pageBreak', '|',
-                    'textPartLanguage', '|',
-                    'sourceEditing'
-                ],
-                shouldNotGroupWhenFull: true
-            },
-            list: {
-                properties: {
-                    styles: true,
-                    startIndex: true,
-                    reversed: true
-                }
-            },
-            heading: {
-                options: [
-                    { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-                    { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
-                    { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
-                    { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
-                    { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
-                ]
-            },
-            placeholder: 'Welcome to CKEditor 5!',
-            fontFamily: {
-                options: [
-                    'default',
-                    'Arial, Helvetica, sans-serif',
-                    'Courier New, Courier, monospace',
-                    'Georgia, serif',
-                    'Lucida Sans Unicode, Lucida Grande, sans-serif',
-                    'Tahoma, Geneva, sans-serif',
-                    'Times New Roman, Times, serif',
-                    'Trebuchet MS, Helvetica, sans-serif',
-                    'Verdana, Geneva, sans-serif'
-                ],
-                supportAllValues: true
-            },
-            fontSize: {
-                options: [ 10, 12, 14, 'default', 18, 20, 22 ],
-                supportAllValues: true
-            },
-            htmlSupport: {
-                allow: [
-                    {
-                        name: /.*/,
-                        attributes: true,
-                        classes: true,
-                        styles: true
-                    }
-                ]
-            },
-            htmlEmbed: {
-                showPreviews: true
-            },
-            link: {
-                decorators: {
-                    addTargetToExternalLinks: true,
-                    defaultProtocol: 'https://',
-                    toggleDownloadable: {
-                        mode: 'manual',
-                        label: 'Downloadable',
-                        attributes: {
-                            download: 'file'
-                        }
-                    }
-                }
-            },
-            mention: {
-                feeds: [
-                    {
-                        marker: '@',
-                        feed: [
-                            '@apple', '@bears', '@brownie', '@cake', '@cake', '@candy', '@canes', '@chocolate', '@cookie', '@cotton', '@cream',
-                            '@cupcake', '@danish', '@donut', '@dragée', '@fruitcake', '@gingerbread', '@gummi', '@ice', '@jelly-o',
-                            '@liquorice', '@macaroon', '@marzipan', '@oat', '@pie', '@plum', '@pudding', '@sesame', '@snaps', '@soufflé',
-                            '@sugar', '@sweet', '@topping', '@wafer'
-                        ],
-                        minimumCharacters: 1
-                    }
-                ]
-            },
-            removePlugins: [
-                'AIAssistant', 'CKBox', 'CKFinder', 'EasyImage', 'Base64UploadAdapter', 
-                'MultiLevelList', 'RealTimeCollaborativeComments', 'RealTimeCollaborativeTrackChanges', 
-                'RealTimeCollaborativeRevisionHistory', 'PresenceList', 'Comments', 'TrackChanges', 
-                'TrackChangesData', 'RevisionHistory', 'Pagination', 'WProofreader', 'MathType', 
-                'SlashCommand', 'Template', 'DocumentOutline', 'FormatPainter', 'TableOfContents', 
-                'PasteFromOfficeEnhanced', 'CaseChange'
-            ]
-        };
+</div>
 
-        // Initialize CKEditor for each editor
-        CKEDITOR.ClassicEditor.create(document.getElementById("editor1"), editorConfig);
-        CKEDITOR.ClassicEditor.create(document.getElementById("editor2"), editorConfig);
-        CKEDITOR.ClassicEditor.create(document.getElementById("editor3"), editorConfig);
-        CKEDITOR.ClassicEditor.create(document.getElementById("editor4"), editorConfig);
-        CKEDITOR.ClassicEditor.create(document.getElementById("editor5"), editorConfig);
-    </script>
-</body>
-</html>
+<div class="container">
+    <form action="{{ route('kelPosttest.store') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="mapel">Pilih Mapel</label>
+            <select id="mapel" name="mapel" class="form-control">
+                <option value="">-- Pilih Mapel --</option>
+                @foreach ($mapels as $mapel)
+                    <option value="{{ $mapel->id }}">{{ $mapel->mapel }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="materi">Pilih Materi</label>
+            <select id="materi" name="materi" class="form-control" disabled>
+                <option value="">-- Pilih Materi --</option>
+            </select>
+        </div>
+        <div id="questions-container">
+            <div class="form-group">
+                <label for="question">Pertanyaan</label>
+                <input type="text" name="questions[0][question]" class="form-control" placeholder="Masukkan pertanyaan">
+            </div>
+            <div class="form-group">
+                <label for="option_a">Opsi A</label>
+                <input type="text" name="questions[0][a]" class="form-control" placeholder="Masukkan opsi A">
+            </div>
+            <div class="form-group">
+                <label for="option_b">Opsi B</label>
+                <input type="text" name="questions[0][b]" class="form-control" placeholder="Masukkan opsi B">
+            </div>
+            <div class="form-group">
+                <label for="option_c">Opsi C</label>
+                <input type="text" name="questions[0][c]" class="form-control" placeholder="Masukkan opsi C">
+            </div>
+            <div class="form-group">
+                <label for="option_d">Opsi D</label>
+                <input type="text" name="questions[0][d]" class="form-control" placeholder="Masukkan opsi D">
+            </div>
+            <div class="form-group">
+                <label for="option_e">Opsi E</label>
+                <input type="text" name="questions[0][e]" class="form-control" placeholder="Masukkan opsi E">
+            </div>
+            <div class="form-group">
+                <label for="answer_key">Kunci Jawaban</label>
+                <select name="questions[0][kunci]" class="form-control">
+                    <option value="">-- Pilih Kunci Jawaban --</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                    <option value="d">D</option>
+                    <option value="e">E</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" id="add-question" class="btn btn-secondary">Tambah Pertanyaan</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+    </form>
+</div>
+
+<script>
+document.getElementById('mapel').addEventListener('change', function() {
+    var mapelId = this.value;
+    var materiSelect = document.getElementById('materi');
+    
+    if (mapelId) {
+        fetch('/getMateri/' + mapelId)
+            .then(response => response.json())
+            .then(data => {
+                materiSelect.innerHTML = '<option value="">-- Pilih Materi --</option>';
+                data.forEach(materi => {
+                    materiSelect.innerHTML += `<option value="${materi.id}">${materi.nama_materi}</option>`;
+                });
+                materiSelect.disabled = false;
+            })
+            .catch(error => console.error('Error fetching materi:', error));
+    } else {
+        materiSelect.innerHTML = '<option value="">-- Pilih Materi --</option>';
+        materiSelect.disabled = true;
+    }
+});
+
+document.getElementById('add-question').addEventListener('click', function() {
+    var container = document.getElementById('questions-container');
+    var questionIndex = container.children.length / 7; // Each question block has 7 input fields
+
+    var questionHtml = `
+        <div class="form-group">
+            <label for="question">Pertanyaan</label>
+            <input type="text" name="questions[${questionIndex}][question]" class="form-control" placeholder="Masukkan pertanyaan">
+        </div>
+        <div class="form-group">
+            <label for="option_a">Opsi A</label>
+            <input type="text" name="questions[${questionIndex}][a]" class="form-control" placeholder="Masukkan opsi A">
+        </div>
+        <div class="form-group">
+            <label for="option_b">Opsi B</label>
+            <input type="text" name="questions[${questionIndex}][b]" class="form-control" placeholder="Masukkan opsi B">
+        </div>
+        <div class="form-group">
+            <label for="option_c">Opsi C</label>
+            <input type="text" name="questions[${questionIndex}][c]" class="form-control" placeholder="Masukkan opsi C">
+        </div>
+        <div class="form-group">
+            <label for="option_d">Opsi D</label>
+            <input type="text" name="questions[${questionIndex}][d]" class="form-control" placeholder="Masukkan opsi D">
+        </div>
+        <div class="form-group">
+            <label for="option_e">Opsi E</label>
+            <input type="text" name="questions[${questionIndex}][e]" class="form-control" placeholder="Masukkan opsi E">
+        </div>
+        <div class="form-group">
+            <label for="answer_key">Kunci Jawaban</label>
+            <select name="questions[${questionIndex}][kunci]" class="form-control">
+                <option value="">-- Pilih Kunci Jawaban --</option>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+                <option value="d">D</option>
+                <option value="e">E</option>
+            </select>
+        </div>
+    `;
+    container.insertAdjacentHTML('beforeend', questionHtml);
+});
+</script>
 
 @endsection

@@ -34,13 +34,16 @@ use App\Http\Controllers\LandingPageController;
 Route::get('/dbGuru',[DashboardController::class, 'index']);
 Route::get('/', [LandingPageController::class, 'index']);
 Route::resource('/kelUser', UserController::class);
+
 Route::resource('/kelPosttest', PosttestController::class);
-Route::resource('/kelPretest', PretestController::class);
+Route::get('/getMateri/{id_mapel}', [PosttestController::class, 'getMateri']);
+
+Route::resource('/kelPretest', PretestController::class)->except('edit','update', 'show');
 Route::resource('/kelFeedback', FeedbackController::class);
 Route::resource('/kelJawaban', JawabanController::class);
 Route::resource('/laporan', NilaiController::class);
 Route::resource('/kelMateri', MateriController::class);
-Route::resource('/kelMapel', MapelController::class);
+Route::resource('/kelMapel', MapelController::class)->except('show');
 
 // Route::get('/login', [LoginController::class,'index']);
 

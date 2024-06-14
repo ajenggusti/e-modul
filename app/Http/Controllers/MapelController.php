@@ -38,20 +38,20 @@ class MapelController extends Controller
         ]);
 
         if ($request->hasFile('gbr')) {
-                $filePath = public_path('storage/' . $request->gbr);
-                if (file_exists($filePath)) {
-                    unlink($filePath);
-                }
+            $filePath = public_path('storage/' . $request->gbr);
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
             $image = "gambars/" . time() . '-' . uniqid() . '.' . $request->gbr->getClientOriginalExtension();
             $request->gbr->move('storage/gambars', $image);
-            $mapel=new Mapel();
+            $mapel = new Mapel();
             $mapel->gambar = $image;
             $mapel->mapel = $request->mapel;
             $mapel->id_user = 1;
             $mapel->save();
         }
 
-        return redirect()->back()->with('success', 'Data berhasil disimpan.');
+        return redirect('/kelMapel')->with('success', 'Data berhasil disimpan.');
     }
 
     /**
@@ -67,7 +67,10 @@ class MapelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $mapel = Mapel::findOrFail($id);
+        return view('guru.kelolaMapel.edit', [
+            'mapel' => $mapel
+        ]);
     }
 
     /**
@@ -75,7 +78,28 @@ class MapelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validate the input
+        $request->validate([
+            'mapel' => 'required|string|max:255',
+            'gbr' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $mapel = Mapel::findOrFail($id);
+        $mapel->mapel = $request->mapel;
+
+        if ($request->hasFile('gbr')) {
+            $filePath = public_path('storage/' . $mapel->gambar);
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+            $image = "gambars/" . time() . '-' . uniqid() . '.' . $request->gbr->getClientOriginalExtension();
+            $request->gbr->move('storage/gambars', $image);
+            $mapel->gambar = $image;
+        }
+
+        $mapel->save();
+
+        return redirect('/kelMapel')->with('success', 'Data berhasil diupdate.');
     }
 
     /**
@@ -83,6 +107,16 @@ class MapelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mapel = Mapel::findOrFail($id);
+
+        // Delete the image file
+        $filePath = public_path('storage/' . $mapel->gambar);
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+
+        $mapel->delete();
+
+        return redirect('/kelMapel')->with('success', 'Data berhasil dihapus.');
     }
 }

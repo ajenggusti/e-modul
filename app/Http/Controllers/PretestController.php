@@ -41,22 +41,17 @@ class PretestController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the request data
         $validatedData = $request->validate([
             'jawaban' => 'required|string',
             'id_materi' => 'required|integer',
         ]);
 
-        // Create a new instance of the model and fill it with the validated data
         $data = new Pretest();
         $data->jawaban = $validatedData['jawaban'];
         $data->id_materi = $validatedData['id_materi'];
         $data->id_user = 2;
 
-        // Save the model to the database
         $data->save();
-
-        // Redirect to the appropriate route with a success message
         return redirect()->route('preMateriPost', ['id' => $validatedData['id_materi']])
             ->with('success', 'Materi created successfully!');
     }
@@ -91,6 +86,9 @@ class PretestController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pretest = Pretest::findOrFail($id);
+            $pretest->delete();
+            return redirect('/kelPretest')->with('success', 'Pre-test berhasil dihapus!');
     }
+    
 }

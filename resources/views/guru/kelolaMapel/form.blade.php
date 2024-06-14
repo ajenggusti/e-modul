@@ -1,18 +1,25 @@
 @extends('layout.mainGuru')
 @section('content')
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1 class="m-0">Kelola Mata Pelajaran</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/dbGuru">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="/kelMapel">Mata Pelajaran</a></li>
+            <li class="breadcrumb-item active">Form Tambah Mata Pelajaran</li>
+            </ol>
+        </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Form Tambah Mata Pelajaran</h1>
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
+
 
             <!-- Main content -->
             <section class="content">
@@ -31,11 +38,17 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="mapel">Mapel</label>
-                                            <input type="text" name="mapel" class="form-control" id="mapel" placeholder="Enter Mapel">
+                                            <input type="text" name="mapel" class="form-control @error('mapel') is-invalid @enderror" id="mapel" placeholder="Enter Mapel" value="{{ old('mapel') }}">
+                                            @error('mapel')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="gambar">Gambar</label>
-                                            <input type="file" name="gbr" class="form-control" id="gambar" onchange="previewImage(event)">
+                                            <input type="file" name="gbr" class="form-control @error('gbr') is-invalid @enderror" id="gambar" onchange="previewImage(event)">
+                                            @error('gbr')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="preview">Preview Gambar</label>
@@ -73,6 +86,14 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    </script>
 
+        // Display previously uploaded image if it exists
+        @if(old('gbr'))
+            document.addEventListener('DOMContentLoaded', function() {
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = "{{ old('gbr') }}";
+                imagePreview.style.display = 'block';
+            });
+        @endif
+    </script>
 @endsection
