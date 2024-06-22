@@ -17,11 +17,10 @@ class AksesPosttestController extends Controller
 
     public function submitPostTest(Request $request)
     {
-        $userId = auth()->id(); // Assuming the user is authenticated
+        $userId = auth()->id();
         $idMateri = $request->input('id_materi');
         $answers = $request->input('answers');
 
-        // Process each answer
         foreach ($answers as $postTestId => $answer) {
             $posttest = Posttest::find($postTestId);
 
@@ -38,7 +37,6 @@ class AksesPosttestController extends Controller
             }
         }
 
-        // Calculate the score
         $totalQuestions = Posttest::where('id_materi', $idMateri)->count();
         $correctAnswers = Jawaban::where('id_user', $userId)
             ->where('id_materi', $idMateri)
@@ -46,8 +44,6 @@ class AksesPosttestController extends Controller
             ->count();
 
         $score = ($correctAnswers / $totalQuestions) * 100;
-
-        // Store the score in the Nilai table
         Nilai::updateOrCreate(
             ['id_user' => $userId, 'id_materi' => $idMateri],
             ['nilai' => $score]

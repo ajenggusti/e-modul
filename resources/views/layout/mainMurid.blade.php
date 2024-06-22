@@ -35,8 +35,7 @@
                         <li>
                             <a class="active" href="javascript:void(0)">Home</a>
                         </li>
-                        <li><a href="contact.html">Mata Pelajaran</a></li>
-                        <li><a href="contact.html">Riwayat</a></li>
+                        <li><a href="/riwayat">Riwayat</a></li>
 
 
                     </ul>
@@ -187,7 +186,7 @@
                     <div class="row align-items-center copyright-area">
                         <div class="col-lg-5 col-md-4 col-sm-12">
                             <div class="copyright-area-text">
-                                <p>Copyright 2024. Intan Sukma Junia - NIM!</p>
+                                <p>Copyright 2024. Intan Sukma Junia - 200631100040!</p>
                             </div>
                         </div>
 

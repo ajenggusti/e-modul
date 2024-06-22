@@ -9,6 +9,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('style/landingPage.css') }}">
+    <style>
+        .mapel-item {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px; /* Mengatur sudut kotak yang tumpul */
+            transition: transform 0.3s ease; /* Efek animasi ketika digeser */
+        }
+        .mapel-item:hover {
+            transform: scale(1.02); /* Memperbesar elemen saat dihover */
+        }
+        .gambarMapel img {
+            width: 80px; /* Ukuran gambar disesuaikan */
+            height: auto;
+            border-radius: 8px; /* Mengatur sudut gambar */
+            margin-right: 20px;
+        }
+        @media (max-width: 768px) {
+            .mapel-item {
+                flex-direction: column; /* Tata letak diubah menjadi vertikal pada layar kecil */
+                align-items: flex-start;
+            }
+            .gambarMapel {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <main>
@@ -61,20 +90,15 @@
                     <div class="testimonial-slider">
                         <div class="testimonial-container">
                             @foreach ($datas as $data)
-                            <div class="testimonial-item">
-                                <div class="client-profile d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center mb-20">
-                                        <div class="gambarMapel">
-                                            <img src="{{ asset('storage/' . $data->gambar) }}" alt="client-image" />
-                                        </div>
-                                        <div class="client-name ml-2">
-                                            <h6>{{ $data->mapel }}</h6>
-                                            <span>{{ $data->user->nama }}</span>
-                                        </div>
-                                    </div>
-                                    
+                            <div class="mapel-item" data-aos="fade-up">
+                                <div class="gambarMapel">
+                                    <img src="{{ asset('storage/' . $data->gambar) }}" alt="client-image" />
                                 </div>
-                                <div class="d-flex">
+                                <div class="client-name ml-2">
+                                    <h6>{{ $data->mapel }}</h6>
+                                    <span>{{ $data->user->nama }}</span>
+                                </div>
+                                <div class="ml-auto">
                                     <a href="/detailMapel/{{ $data->id }}" class="btn btn-primary">Lihat</a>
                                 </div>
                             </div>

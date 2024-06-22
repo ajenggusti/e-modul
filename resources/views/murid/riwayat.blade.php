@@ -1,0 +1,97 @@
+@extends('layout.mainMurid')
+@section('content')
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Riwayat Nilai</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #ff66b2;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ff66b2;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #ff66b2;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #ffe6f0;
+        }
+        .btn-submit {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #ff66b2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-submit:hover {
+            background-color: #e60073;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Riwayat Nilai</h1>
+
+        @if(session('success'))
+            <p style="color: green;">{{ session('success') }}</p>
+        @endif
+
+        @if($nilais->isEmpty())
+            <p>Belum ada nilai yang tercatat.</p>
+        @else
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nilai</th>
+                        <th>ID Materi</th>
+                        <th>ID User</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($nilais as $nilai)
+                        <tr>
+                            <td>{{ $nilai->id }}</td>
+                            <td>{{ $nilai->nilai }}</td>
+                            <td>{{ $nilai->materi->nama_materi }}</td>
+                            <td>{{ $nilai->materi->mapel->mapel }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
+    </div>
+</body>
+</html>
+
+@endsection

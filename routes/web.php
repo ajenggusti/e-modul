@@ -1,24 +1,25 @@
 <?php
 
-use App\Http\Controllers\AksesPosttestController;
 use App\Models\Posttest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SoalController;
 use App\Http\Controllers\UserController;
-// use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MapelController;
+// use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\JawabanController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PretestController;
+use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PosttestController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\AksesPosttestController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,3 +68,6 @@ Route::get('/aksesMateri/{id}', [HomeController::class, 'aksesMateri']);
 // akses post test
 Route::get('/aksesPostTest/{id}', [AksesPosttestController::class, 'index']);
 Route::post('/submitPostTest', [AksesPosttestController::class, 'submitPostTest'])->name('submitPostTest');
+
+// riwayat
+Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat.index');
