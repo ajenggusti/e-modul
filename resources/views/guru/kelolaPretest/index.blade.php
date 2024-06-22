@@ -43,7 +43,7 @@
           @foreach ($datas as $data)
             <tr>
               <td>{{ $data->id }}</td>
-              <td>{{ $data->user->nama }}</td>
+              <td>{{ $data->user->name }}</td>
               <td>{{ $data->materi->mapel->mapel }}</td>
               <td>{{ $data->materi->nama_materi }}</td>
               <td>{{ $data->jawaban }}</td>

@@ -12,10 +12,9 @@ class NilaiController extends Controller
      */
     public function index()
     {
-        $datas = Nilai::get();
-        // dd($datas);
+        $datas = Nilai::with(['user', 'materi.mapel'])->get(); // Eager load relationships
         return view('guru.kelolaNilai.index', [
-            'datas'=>$datas
+            'datas' => $datas
         ]);
     }
 
@@ -64,6 +63,12 @@ class NilaiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $nilai = Nilai::findOrFail($id); // Find the record by ID or fail
+
+        // Delete the record
+        $nilai->delete();
+
+        // Redirect back to the index with a success message
+        return redirect()->route('laporan.index')->with('success', 'Nilai berhasil dihapus.');
     }
 }

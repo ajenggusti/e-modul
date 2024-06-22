@@ -17,10 +17,6 @@
   </div><!-- /.container-fluid -->
 </div>
 
-
-
-
-
 @if (session('success') )
   <div class="alert alert-success alert-dismissible fade show" role="alert">
       {{ session('success') }}
@@ -40,8 +36,7 @@
             <th>Nama</th>
             <th>Email</th>
             <th>Level</th>
-            <th>Absen</th>
-            <th>NIP</th>
+            <th>Nomor Identitas</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -49,11 +44,10 @@
           @foreach ($datas as $data)
             <tr>
               <td>{{ $data->id }}</td>
-              <td>{{ $data->nama }}</td>
+              <td>{{ $data->name }}</td>
               <td>{{ $data->email }}</td>
               <td>{{ $data->level}}</td>
-              <td>{{ $data->absen }}</td>
-              <td>{{ $data->nip }}</td>
+              <td>{{ $data->nomor_identitas }}</td>
               <td>
                   <div class="action-buttons">
                       <a href="/kelUser/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>
@@ -66,8 +60,6 @@
               </td>
             </tr>
           @endforeach
-          
-
         </tfoot>
       </table>
     </div>

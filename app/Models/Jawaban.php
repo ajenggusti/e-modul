@@ -9,6 +9,7 @@ class Jawaban extends Model
 {
     use HasFactory;
     protected $table = 'jawaban';
+    protected $guarded= [];
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user');

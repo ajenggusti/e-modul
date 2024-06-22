@@ -18,6 +18,7 @@ class JawabanSeeder extends Seeder
                 'jawaban' => 'a',
                 'status'=>'benar',
                 'id_user'=>'2',
+                'id_materi'=>1,
                 'id_post_test'=>'1'
             ],
         ]);

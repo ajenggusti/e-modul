@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('jawaban')->nullable();
             $table->enum('status',['benar', 'salah'])->nullable();
             $table->unsignedBigInteger('id_user')->nullable();
+            $table->unsignedBigInteger('id_materi')->nullable();
             $table->unsignedBigInteger('id_post_test')->nullable();
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_materi')->references('id')->on('materi')->onDelete('cascade');
             $table->foreign('id_post_test')->references('id')->on('posttest')->onDelete('cascade');
         });
     }

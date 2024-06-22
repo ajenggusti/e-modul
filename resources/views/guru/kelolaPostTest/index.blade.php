@@ -17,29 +17,24 @@
   </div><!-- /.container-fluid -->
 </div>
 
-
-
-
-
 @if (session('success') )
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     {{ session('success') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-
 @endif
+
 <a href="/kelPosttest/create" class="btn btn-primary"> <i class="bi bi-plus-lg"></i> Tambah Data</a>
-<br> <br>
+<br><br>
 <div class="card">
-    <!-- /.card-header -->
     <div class="card-body">
       <table id="example1" class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>id</th>
-            <th>pertanyaan</th>
-            <th>kunci</th>
-            <th>Mata pelajaran</th>
+            <th>ID</th>
+            <th>Pertanyaan</th>
+            <th>Kunci</th>
+            <th>Mata Pelajaran</th>
             <th>Materi</th>
             <th>Action</th>
           </tr>
@@ -55,21 +50,18 @@
               <td>
                   <div class="action-buttons">
                       <a href="/kelPosttest/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>
-                      <form action="/kelPosttest/{{ $data->id }}" method="POST">
+                      <a href="/kelPosttest/{{ $data->id }}" class="btn btn-primary"><i class="bi bi-eye"></i> Show</a>
+                      <form action="/kelPosttest/{{ $data->id }}" method="POST" style="display:inline;">
                           @method('DELETE')
                           @csrf
                           <button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')"><i class="bi bi-trash"></i> Delete</button>
                       </form>
                   </div>
               </td>
-              {{-- <td>{{ $data-> }}</td> --}}
             </tr>
           @endforeach
-          
-
         </tfoot>
       </table>
     </div>
-    <!-- /.card-body -->
-  </div>
+</div>
 @endsection

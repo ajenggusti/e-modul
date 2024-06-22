@@ -11,7 +11,7 @@ class PosttestController extends Controller
 {
     public function index()
     {
-        $datas = Posttest::with('questions')->get();
+        $datas = Posttest::get();
         $mapels = Mapel::all();
         return view('guru.kelolaPostTest.index', [
             'datas' => $datas,
@@ -29,6 +29,7 @@ class PosttestController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'mapel' => 'required',
             'materi' => 'required',
@@ -41,12 +42,9 @@ class PosttestController extends Controller
             'questions.*.kunci' => 'required|string',
         ]);
 
-        $posttest = Posttest::create([
-            'id_materi' => $request->materi,
-        ]);
-
         foreach ($request->questions as $question) {
-            $posttest->questions()->create([
+            Posttest::create([
+                'id_materi' => $request->materi,
                 'pertanyaan' => $question['question'],
                 'a' => $question['a'],
                 'b' => $question['b'],
@@ -63,22 +61,60 @@ class PosttestController extends Controller
 
     public function show(string $id)
     {
-        //
+        $posttest = Posttest::findOrFail($id);
+        return view('guru.kelolaPostTest.show', [
+            'posttest' => $posttest
+        ]);
     }
+
 
     public function edit(string $id)
     {
-        //
+        $posttest = Posttest::findOrFail($id);
+        $mapels = Mapel::all();
+        $materi = Materi::where('id_mapel', $posttest->materi->id_mapel)->get();
+
+        return view('guru.kelolaPostTest.edit', [
+            'posttest' => $posttest,
+            'mapels' => $mapels,
+            'materi' => $materi
+        ]);
     }
 
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'mapel' => 'required',
+            'materi' => 'required',
+            'question' => 'required|string',
+            'a' => 'required|string',
+            'b' => 'required|string',
+            'c' => 'required|string',
+            'd' => 'required|string',
+            'e' => 'required|string',
+            'kunci' => 'required|string',
+        ]);
+
+        $posttest = Posttest::findOrFail($id);
+        $posttest->update([
+            'id_materi' => $request->materi,
+            'pertanyaan' => $request->question,
+            'a' => $request->a,
+            'b' => $request->b,
+            'c' => $request->c,
+            'd' => $request->d,
+            'e' => $request->e,
+            'kunci' => $request->kunci,
+        ]);
+
+        return redirect('/kelPosttest')->with('success', 'Post Test updated successfully.');
     }
 
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $posttest = Posttest::findOrFail($id);
+        $posttest->delete();
+        return redirect('/kelPosttest')->with('success', 'Post Test deleted successfully.');
     }
 
     public function getMateri($id_mapel)

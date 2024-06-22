@@ -44,7 +44,7 @@
               <tr>
                   <td>{{ $data->id }}</td>
                   <td>{{ $data->mapel }}</td>
-                  <td>{{ $data->user->nama }}</td>
+                  <td>{{ $data->user->name }}</td>
                   <td><img class="gambar-mapel" src="{{ asset('storage/' . $data->gambar) }}" alt="Nama Gambar"></td>
                   <td>
                       <div class="action-buttons d-flex">

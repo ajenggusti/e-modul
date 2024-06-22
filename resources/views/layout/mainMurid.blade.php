@@ -37,33 +37,15 @@
                         </li>
                         <li><a href="contact.html">Mata Pelajaran</a></li>
                         <li><a href="contact.html">Riwayat</a></li>
-                        {{-- <li>
-                            <a href="javascript:void(0)">Services</a>
-                            <ul class="sub-menu">
-                                <li><a href="services.html">Services</a></li>
-                                <li>
-                                    <a href="service-details.html">Services Details</a>
-                                </li>
-                            </ul>
-                        </li> --}}
-                        
-                        {{-- <li>
-                            <a href="javascript:void(0)">Blog</a>
-                            <ul class="sub-menu">
-                                <li><a href="blog.html">Blog</a></li>
-                                <li>
-                                    <a href="blog-details.html">Blog Details</a>
-                                </li>
-                            </ul>
-                        </li> --}}
+
 
                     </ul>
                     <div class="right-content ml-auto">
                         <div class="contact-number">
-                            <a class="primary__button primary__button-bgBlack" href="#">
+                            <a class="primary__button primary__button-bgBlack" href="/login">
                                 Login
                             </a>
-                            <a class="primary__button primary__button-bgBlack" href="#">
+                            <a class="primary__button primary__button-bgBlack" href="/register">
                                 Register
                             </a>
                         </div>
@@ -230,7 +212,7 @@
         <script src="{{ asset('poco/assets/js/aos.js') }}"></script>
         <script src="{{ asset('poco/assets/js/main.js') }}"></script>
         <script> 
-         /* magnificPopup video view*/
+        /* magnificPopup video view*/
             $('.popup-video').magnificPopup({
               type: 'iframe',
             });

@@ -41,19 +41,16 @@
           @foreach ($datas as $data)
             <tr>
               <td>{{ $data->id }}</td>
-              <td>{{ $data->user->nama}}</td>
+              <td>{{ $data->user->name}}</td>
               <td>{{ $data->materi->mapel->mapel }}</td>
               <td>{{ $data->materi->nama_materi}}</td>
               <td>{{ $data->nilai}}</td>
               <td>
-                  <div class="action-buttons">
-                      <a href="/laporan/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>
-                      <form action="/laporan/{{ $data->id }}" method="POST">
-                          @method('DELETE')
-                          @csrf
-                          <button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')"><i class="bi bi-trash"></i> Delete</button>
-                      </form>
-                  </div>
+                  <form action="/laporan/{{ $data->id }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
+                      @method('DELETE')
+                      @csrf
+                      <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+                  </form>
               </td>
             </tr>
           @endforeach
