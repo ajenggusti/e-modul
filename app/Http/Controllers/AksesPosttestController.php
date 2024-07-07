@@ -24,31 +24,36 @@ class AksesPosttestController extends Controller
         foreach ($answers as $postTestId => $answer) {
             $posttest = Posttest::find($postTestId);
 
-            if ($posttest) {
-                $status = ($posttest->kunci === $answer) ? 'benar' : 'salah';
+            $status = $posttest && $posttest->kunci === $answer ? 'benar' : 'salah';
 
-                Jawaban::create([
-                    'jawaban' => $answer,
-                    'status' => $status,
-                    'id_user' => $userId,
-                    'id_materi' => $idMateri,
-                    'id_post_test' => $postTestId,
-                ]);
-            }
+            Jawaban::create([
+                'jawaban' => $answer,
+                'status' => $status,
+                'id_user' => $userId,
+                'id_materi' => $idMateri,
+                'id_post_test' => $postTestId,
+            ]);
         }
 
         $totalQuestions = Posttest::where('id_materi', $idMateri)->count();
-        $correctAnswers = Jawaban::where('id_user', $userId)
+
+        $recentAnswers = Jawaban::where('id_user', $userId)
             ->where('id_materi', $idMateri)
-            ->where('status', 'benar')
-            ->count();
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->unique('id_post_test');
+
+        $correctAnswers = $recentAnswers->where('status', 'benar')->count();
 
         $score = ($correctAnswers / $totalQuestions) * 100;
-        Nilai::updateOrCreate(
-            ['id_user' => $userId, 'id_materi' => $idMateri],
-            ['nilai' => $score]
-        );
+        $roundedScore = round($score);
 
-        return redirect()->back()->with('success', 'Posttest submitted successfully!');
+        Nilai::create([
+            'id_user' => $userId,
+            'id_materi' => $idMateri,
+            'nilai' => $roundedScore
+        ]);
+
+        return redirect('/riwayat')->with('success', 'Hai terimakasih sudah mengerjakan post test ini, semangat belajar ya!!');
     }
 }

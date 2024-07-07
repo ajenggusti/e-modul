@@ -65,32 +65,32 @@
         <h1>Kerjakan soal dibawah ini!</h1>
 
         @if($datas->isEmpty())
-            <p class="no-posttests">No posttests found for this materi.</p>
+            <p class="no-posttests">Soal belum tersedia.</p>
         @else
             <form action="{{ route('submitPostTest') }}" method="POST">
                 @csrf
                 <input type="hidden" name="id_materi" value="{{ $id }}">
-                @foreach($datas as $data)
+                @foreach($datas as $index => $data)
                     <div class="question">
-                        <p>{{ $data->pertanyaan }}</p>
+                        <p>{{ $index + 1 }}. {{ $data->pertanyaan }}</p>
                         <label>
-                            <input type="radio" name="answers[{{ $data->id }}]" value="a">
+                            <input type="radio" name="answers[{{ $data->id }}]" value="a">A. 
                             {{ $data->a }}
                         </label>
                         <label>
-                            <input type="radio" name="answers[{{ $data->id }}]" value="b">
+                            <input type="radio" name="answers[{{ $data->id }}]" value="b">B. 
                             {{ $data->b }}
                         </label>
                         <label>
-                            <input type="radio" name="answers[{{ $data->id }}]" value="c">
+                            <input type="radio" name="answers[{{ $data->id }}]" value="c">C. 
                             {{ $data->c }}
                         </label>
                         <label>
-                            <input type="radio" name="answers[{{ $data->id }}]" value="d">
+                            <input type="radio" name="answers[{{ $data->id }}]" value="d">D. 
                             {{ $data->d }}
                         </label>
                         <label>
-                            <input type="radio" name="answers[{{ $data->id }}]" value="e">
+                            <input type="radio" name="answers[{{ $data->id }}]}" value="e">E. 
                             {{ $data->e }}
                         </label>
                     </div>

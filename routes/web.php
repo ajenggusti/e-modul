@@ -54,13 +54,15 @@ Route::get('/getMateri/{id_mapel}', [PosttestController::class, 'getMateri']);
 Route::resource('/kelPretest', PretestController::class)->except('edit', 'update', 'show');
 Route::resource('/kelFeedback', FeedbackController::class);
 Route::resource('/kelJawaban', JawabanController::class);
+
+// export to excell
+Route::get('/laporan/export', [NilaiController::class, 'export'])->name('laporan.export');
 Route::resource('/laporan', NilaiController::class);
 Route::resource('/kelMateri', MateriController::class);
 Route::resource('/kelMapel', MapelController::class)->except('show');
 
 // halaman home
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/materi', [HomeController::class, 'menuMateri']);
 Route::get('/detailMateri', [HomeController::class, 'detailMapel']);
 Route::get('/preMateriPost/{id}', [HomeController::class, 'preMateriPost'])->name('preMateriPost');
 Route::get('/aksesMateri/{id}', [HomeController::class, 'aksesMateri']);
@@ -72,3 +74,5 @@ Route::post('/submitPostTest', [AksesPosttestController::class, 'submitPostTest'
 
 // riwayat
 Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat.index');
+
+

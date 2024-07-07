@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mapel;
 use App\Models\Materi;
 use App\Models\Pretest;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 
 class PretestController extends Controller
@@ -45,15 +46,23 @@ class PretestController extends Controller
             'jawaban' => 'required|string',
             'id_materi' => 'required|integer',
         ]);
-
+    
         $data = new Pretest();
         $data->jawaban = $validatedData['jawaban'];
         $data->id_materi = $validatedData['id_materi'];
         $data->id_user = auth()->id();
-
+    
         $data->save();
+    
+        // Fetch a random message from feedback table
+        $randomFeedback = Feedback::inRandomOrder()->first();
+        if ($randomFeedback) {
+            $randomFeedbackMessage = $randomFeedback->kata_semangat;
+        } else {
+            $randomFeedbackMessage = 'Semangat belajar!!'; // Default message if no feedback found
+        }    
         return redirect()->route('preMateriPost', ['id' => $validatedData['id_materi']])
-            ->with('success', 'Materi created successfully!');
+            ->with('success', $randomFeedbackMessage);
     }
 
 

@@ -35,12 +35,28 @@
 </style>
 
 <div class="content">
+    @if (session('success') )
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="link-container">
-        <a href="{{ route('kelPretest.create') }}?id={{ $data->id }}">
-            Kerjakan Pretest terlebih dahulu pada {{ $data->nama_materi }}
-        </a>
-        <a href="/aksesMateri/{{ $data->id }}">Lihat Materi</a>
-        <a href="/aksesPostTest/{{ $data->id }}">Kerjakan posttest</a>
+        @if($pretestCompleted)
+            <a href="/aksesMateri/{{ $data->id }}">Lihat Materi</a>
+            <a href="/aksesPostTest/{{ $data->id }}">Kerjakan posttest</a>
+        @else
+            <a href="{{ route('kelPretest.create') }}?id={{ $data->id }}">
+                Kerjakan Pretest terlebih dahulu pada {{ $data->nama_materi }}
+            </a>
+            <a onclick="showAlert()" href="#">Lihat Materi</a>
+            <a onclick="showAlert()" href="#">Kerjakan posttest</a>
+        @endif
     </div>
 </div>
+<script>
+    function showAlert() {
+        alert("Kamu belum bisa mengakses, kerjakan pretest terlebih dahulu.");
+    }
+</script>
 @endsection

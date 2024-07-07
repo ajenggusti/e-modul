@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exports\NilaiExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Nilai;
 use Illuminate\Http\Request;
 
@@ -71,4 +72,9 @@ class NilaiController extends Controller
         // Redirect back to the index with a success message
         return redirect()->route('laporan.index')->with('success', 'Nilai berhasil dihapus.');
     }
+    public function export()
+    {
+        return Excel::download(new NilaiExport, 'laporan-nilai.xlsx');
+    }
+    
 }

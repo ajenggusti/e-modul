@@ -62,8 +62,11 @@
     <div class="container">
         <h1>Riwayat Nilai</h1>
 
-        @if(session('success'))
-            <p style="color: green;">{{ session('success') }}</p>
+        @if (session('success') )
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
 
         @if($nilais->isEmpty())

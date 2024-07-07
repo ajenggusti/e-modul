@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mapel;
 use App\Models\Materi;
+use App\Models\Pretest;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -42,12 +43,18 @@ class HomeController extends Controller
     }
     public function preMateriPost($id)
     {
-        // dd($id);
         $data = Materi::findOrFail($id);
+        $userId = auth()->id();
+        $pretestCompleted = Pretest::where('id_materi', $id)
+            ->where('id_user', $userId)
+            ->exists();
+        // dd($pretestCompleted);
         return view('murid.materi', [
-            'data'=>$data
+            'data' => $data,
+            'pretestCompleted' => $pretestCompleted
         ]);
     }
+    
     public function aksesMateri($id)
     {
         $data = Materi::findOrFail($id);
