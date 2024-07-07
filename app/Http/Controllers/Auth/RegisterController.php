@@ -23,7 +23,7 @@ class RegisterController extends Controller
 
         auth()->login($user);
 
-        return redirect('/');
+        return redirect('/login');
     }
 
     protected function validator(array $data)

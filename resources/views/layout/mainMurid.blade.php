@@ -34,11 +34,16 @@
                     @if (Auth::check())
                     <ul class="main-menu d-flex align-items-center">
                         <li>
-                            <a class="active" href="/">Home</a>
+                            <a class="{{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
                         </li>
-                        <li><a href="/detailMateri">Materi</a></li>
-                        <li><a href="/riwayat">Riwayat</a></li>
+                        <li>
+                            <a class="{{ Request::is('detailMateri*') ? 'active' : '' }}" href="/detailMateri">Materi</a>
+                        </li>
+                        <li>
+                            <a class="{{ Request::is('riwayat') ? 'active' : '' }}" href="/riwayat">Riwayat</a>
+                        </li>
                     </ul>
+                    
                     @endif
 
                     <div class="right-content ml-auto">

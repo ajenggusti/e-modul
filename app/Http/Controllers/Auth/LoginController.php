@@ -19,8 +19,11 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('/');
+            if (Auth::user()->level == 'guru') {
+                return redirect()->intended('/dbGuru'); 
+            } else {
+                return redirect()->intended('/detailMateri');
+            }
         }
 
         return back()->withErrors([

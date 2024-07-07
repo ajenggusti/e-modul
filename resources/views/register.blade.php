@@ -18,10 +18,6 @@
     <div class="flex-r container">
         <div class="flex-r login-wrapper">
             <div class="login-text">
-                <div class="logo">
-                    <img src="{{ asset('img/logo.jpg') }}" alt="">
-                    <p>E-MODUL</p>
-                </div>
                 <h1>Register</h1>
 
                 <form class="flex-c" method="POST" action="{{ route('register') }}">
@@ -64,8 +60,8 @@
 
                     <input class="btn" type="submit" value="Create an Account">
                     <span class="extra-line">
-                        <span>Already have an account?</span>
-                        <a href="#">Login</a>
+                        <span>Sudah mempunyai akun?</span>
+                        <a href="/login">Login</a>
                     </span>
                 </form>
             </div>
