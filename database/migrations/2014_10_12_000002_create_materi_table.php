@@ -16,10 +16,8 @@ return new class extends Migration
             $table->string('nama_materi')->nullable();
             $table->longText('link_yt')->nullable();
             $table->longText('file')->nullable();
-            $table->longText('materi')->nullable();
-            $table->unsignedBigInteger('id_mapel')->nullable();
+            $table->longText('gambar')->nullable();
             $table->timestamps();
-            $table->foreign('id_mapel')->references('id')->on('mapel')->onDelete('cascade');
         });
     }
 

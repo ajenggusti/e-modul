@@ -22,18 +22,12 @@
     <form action="{{ route('kelPosttest.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="mapel">Pilih Mapel</label>
-            <select id="mapel" name="mapel" class="form-control">
-                <option value="">-- Pilih Mapel --</option>
-                @foreach ($mapels as $mapel)
-                    <option value="{{ $mapel->id }}">{{ $mapel->mapel }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
             <label for="materi">Pilih Materi</label>
-            <select id="materi" name="materi" class="form-control" disabled>
+            <select id="materi" name="materi" class="form-control">
                 <option value="">-- Pilih Materi --</option>
+                @foreach ($materis as $materi)
+                    <option value="{{ $materi->id }}">{{ $materi->nama_materi }}</option>
+                @endforeach
             </select>
         </div>
         <div id="questions-container">
@@ -79,27 +73,6 @@
 </div>
 
 <script>
-document.getElementById('mapel').addEventListener('change', function() {
-    var mapelId = this.value;
-    var materiSelect = document.getElementById('materi');
-    
-    if (mapelId) {
-        fetch('/getMateri/' + mapelId)
-            .then(response => response.json())
-            .then(data => {
-                materiSelect.innerHTML = '<option value="">-- Pilih Materi --</option>';
-                data.forEach(materi => {
-                    materiSelect.innerHTML += `<option value="${materi.id}">${materi.nama_materi}</option>`;
-                });
-                materiSelect.disabled = false;
-            })
-            .catch(error => console.error('Error fetching materi:', error));
-    } else {
-        materiSelect.innerHTML = '<option value="">-- Pilih Materi --</option>';
-        materiSelect.disabled = true;
-    }
-});
-
 document.getElementById('add-question').addEventListener('click', function() {
     var container = document.getElementById('questions-container');
     var questionIndex = container.children.length / 7; // Each question block has 7 input fields

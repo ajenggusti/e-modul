@@ -69,26 +69,27 @@
         @if($nilais->isEmpty())
             <p>Belum ada nilai yang tercatat.</p>
         @else
-            <table>
-                <thead>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nilai</th>
+                    <th>Materi</th>
+                    <th>Jam dan Tanggal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($nilais as $nilai)
                     <tr>
-                        <th>ID</th>
-                        <th>Nilai</th>
-                        <th>ID Materi</th>
-                        <th>ID User</th>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $nilai->nilai }}</td>
+                        <td>{{ $nilai->materi->nama_materi }}</td>
+                        <td>{{ \Carbon\Carbon::parse($nilai->created_at)->format('H:i:s | d-m-Y') }}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach($nilais as $nilai)
-                        <tr>
-                            <td>{{ $nilai->id }}</td>
-                            <td>{{ $nilai->nilai }}</td>
-                            <td>{{ $nilai->materi->nama_materi }}</td>
-                            <td>{{ $nilai->materi->mapel->mapel }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                @endforeach
+            </tbody>
+        </table>
+        
         @endif
     </div>
 </body>

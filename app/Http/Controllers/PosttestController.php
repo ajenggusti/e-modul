@@ -12,18 +12,18 @@ class PosttestController extends Controller
     public function index()
     {
         $datas = Posttest::get();
-        $mapels = Mapel::all();
+        // $mapels = Mapel::all();
         return view('guru.kelolaPostTest.index', [
             'datas' => $datas,
-            'mapels' => $mapels
+            // 'mapels' => $mapels
         ]);
     }
     
     public function create()
     {
-        $mapels = Mapel::all();
+        $materis = Materi::all();
         return view('guru.kelolaPostTest.form', [
-            'mapels' => $mapels
+            'materis' => $materis
         ]);
     }
 
@@ -31,7 +31,6 @@ class PosttestController extends Controller
     {
         // dd($request);
         $request->validate([
-            'mapel' => 'required',
             'materi' => 'required',
             'questions.*.question' => 'required|string',
             'questions.*.a' => 'required|string',
@@ -71,20 +70,17 @@ class PosttestController extends Controller
     public function edit(string $id)
     {
         $posttest = Posttest::findOrFail($id);
-        $mapels = Mapel::all();
-        $materi = Materi::where('id_mapel', $posttest->materi->id_mapel)->get();
-
+        $materi = Materi::all(); // Get all materi without filtering by mapel
+    
         return view('guru.kelolaPostTest.edit', [
             'posttest' => $posttest,
-            'mapels' => $mapels,
             'materi' => $materi
         ]);
     }
-
+    
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'mapel' => 'required',
             'materi' => 'required',
             'question' => 'required|string',
             'a' => 'required|string',
@@ -94,7 +90,7 @@ class PosttestController extends Controller
             'e' => 'required|string',
             'kunci' => 'required|string',
         ]);
-
+    
         $posttest = Posttest::findOrFail($id);
         $posttest->update([
             'id_materi' => $request->materi,
@@ -106,9 +102,10 @@ class PosttestController extends Controller
             'e' => $request->e,
             'kunci' => $request->kunci,
         ]);
-
+    
         return redirect('/kelPosttest')->with('success', 'Post Test updated successfully.');
     }
+    
 
     public function destroy($id)
     {

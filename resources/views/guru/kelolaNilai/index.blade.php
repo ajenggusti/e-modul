@@ -31,7 +31,6 @@
           <tr>
             <th>id</th>
             <th>Nama</th>
-            <th>Mapel</th>
             <th>Materi</th>
             <th>Nilai</th>
             <th>Aksi</th>
@@ -42,7 +41,6 @@
             <tr>
               <td>{{ $data->id }}</td>
               <td>{{ $data->user->name}}</td>
-              <td>{{ $data->materi->mapel->mapel }}</td>
               <td>{{ $data->materi->nama_materi}}</td>
               <td>{{ $data->nilai}}</td>
               <td>

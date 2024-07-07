@@ -78,6 +78,7 @@ class MapelController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        dd($request);
         // Validate the input
         $request->validate([
             'mapel' => 'required|string|max:255',

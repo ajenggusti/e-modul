@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -15,11 +14,16 @@ class MateriSeeder extends Seeder
     {
         DB::table('materi')->insert([
             [
-                'nama_materi'=>'bab 1',
+                'nama_materi'=>'CSS',
                 'link_yt' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/PB0-CXA6Myw?si=sFFqVzoHl8ohzXpo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
                 'file'=>'file',
-                'materi'=>'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel quia praesentium aperiam magnam? Laborum quo illo fuga sint laudantium aliquid?',
-                'id_mapel'=>'1'
+                'gambar'=>'Lorem ipsum dolor sit',
+            ],
+            [
+                'nama_materi'=>'HTML',
+                'link_yt' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/bWPMSSsVdPk?si=Uo1PLQ2Lun8Y6Mk2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+                'file'=>'file',
+                'gambar'=>'Lorem ipsum dolor sit amet',
             ],
         ]);
     }

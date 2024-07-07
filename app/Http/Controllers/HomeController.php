@@ -28,17 +28,16 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function detailMapel($id)
+    public function detailMapel()
     {
-        $datas = Materi::where('id_mapel',$id)->get();
-        $mapel = Mapel::findOrFail($id);
+        $datas = Materi::get();
+        // $mapel = Mapel::get();
         // dd($data);
         if (!$datas) {
             abort(404, 'Materi not found');
         }
             return view('murid.detailMapel', [
                 'datas' => $datas,
-                'mapel'=>$mapel
             ]);
     }
     public function preMateriPost($id)
@@ -56,6 +55,9 @@ class HomeController extends Controller
         return view('murid.aksesMateri', [
             'data'=>$data
         ]);
+    }
+    public function menuMateri(){
+        return view('murid.menuMateri');
     }
     
 }

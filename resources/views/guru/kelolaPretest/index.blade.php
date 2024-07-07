@@ -33,7 +33,6 @@
           <tr>            
             <th>id</th>
             <th>Nama</th>
-            <th>Mata Pelajaran</th>
             <th>Materi</th>
             <th>Jawaban Pretest</th>
             <th>Action</th>
@@ -44,7 +43,6 @@
             <tr>
               <td>{{ $data->id }}</td>
               <td>{{ $data->user->name }}</td>
-              <td>{{ $data->materi->mapel->mapel }}</td>
               <td>{{ $data->materi->nama_materi }}</td>
               <td>{{ $data->jawaban }}</td>
               <td>

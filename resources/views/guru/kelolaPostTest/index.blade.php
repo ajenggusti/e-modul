@@ -34,7 +34,6 @@
             <th>ID</th>
             <th>Pertanyaan</th>
             <th>Kunci</th>
-            <th>Mata Pelajaran</th>
             <th>Materi</th>
             <th>Action</th>
           </tr>
@@ -45,7 +44,6 @@
               <td>{{ $data->id }}</td>
               <td>{{ $data->pertanyaan }}</td>
               <td>{{ $data->kunci }}</td>
-              <td>{{ $data->materi->mapel->mapel }}</td>
               <td>{{ $data->materi->nama_materi }}</td>
               <td>
                   <div class="action-buttons">

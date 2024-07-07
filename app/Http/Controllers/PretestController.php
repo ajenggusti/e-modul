@@ -49,7 +49,7 @@ class PretestController extends Controller
         $data = new Pretest();
         $data->jawaban = $validatedData['jawaban'];
         $data->id_materi = $validatedData['id_materi'];
-        $data->id_user = 2;
+        $data->id_user = auth()->id();
 
         $data->save();
         return redirect()->route('preMateriPost', ['id' => $validatedData['id_materi']])

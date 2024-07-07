@@ -16,7 +16,6 @@
         <link rel="stylesheet" href="{{ asset('poco/assets/css/default.css') }}" />
         <link rel="stylesheet" href="{{ asset('poco/assets/css/aos.css') }}" />
         <link rel="stylesheet" href="{{ asset('poco/assets/css/style.css') }}" />
-     
     </head>
     <body>
         <!--[if lte IE 9]>
@@ -28,27 +27,39 @@
         <header id="header" class="header-area">
             <div class="container custom-container">
                 <nav class="menu-area d-flex align-items-center">
-                    <div class="logo logo-container">
+                    {{-- <div class="logo logo-container">
                         <a href="index.html"><img src="{{ asset('img/logo.jpg') }}" alt="logo" /></a>
-                    </div>
+                    </div> --}}
+                    
+                    @if (Auth::check())
                     <ul class="main-menu d-flex align-items-center">
                         <li>
-                            <a class="active" href="javascript:void(0)">Home</a>
+                            <a class="active" href="/">Home</a>
                         </li>
+                        <li><a href="/detailMateri">Materi</a></li>
                         <li><a href="/riwayat">Riwayat</a></li>
-
-
                     </ul>
+                    @endif
+
                     <div class="right-content ml-auto">
                         <div class="contact-number">
-                            <a class="primary__button primary__button-bgBlack" href="/login">
-                                Login
-                            </a>
-                            <a class="primary__button primary__button-bgBlack" href="/register">
-                                Register
-                            </a>
+                            @if (Auth::check())
+                                @if (Auth::user()->level == 'guru')
+                                    <a href="/dbGuru" class="primary__button primary__button-bgBlack">Dashboard</a>
+                                @endif
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                    class="primary__button primary__button-bgBlack ml-2">Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            @else
+                                <a class="primary__button primary__button-bgBlack" href="/login">Login</a>
+                                <a class="primary__button primary__button-bgBlack" href="/register">Register</a>
+                            @endif
                         </div>
                     </div>
+                    
                     <div class="hamburger-menu"><span></span><span></span><span></span></div>
                 </nav>
                 <aside>
@@ -97,7 +108,7 @@
 
         @yield('content')
         
-        <!--  FOOTER AREA -->
+        {{-- <!--  FOOTER AREA -->
         <footer>
             <div class="footer-area">
                 <div class="container">
@@ -198,7 +209,7 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> --}}
         <!-- JS here -->
         <script src="{{ asset('poco/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
         <script src="{{ asset('poco/assets/js/popper.min.js') }}"></script>
@@ -215,9 +226,6 @@
             $('.popup-video').magnificPopup({
               type: 'iframe',
             });
-
-            
-            
         </script>
     </body>
 </html>

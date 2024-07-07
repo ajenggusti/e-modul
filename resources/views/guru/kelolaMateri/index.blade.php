@@ -1,5 +1,6 @@
 @extends('layout.mainGuru')
 @section('content')
+<link href="/style/kelIndex.css" rel="stylesheet">
 
 <div class="content-header">
   <div class="container-fluid">
@@ -34,10 +35,9 @@
           <tr>
             <th>id</th>
             <th>Nama Materi </th>
-            <th>Mata Pelajaran </th>
+            <th>Gambar sampul </th>
             <th>Video Pembelajaran</th>
             <th>File</th>
-            <th>Materi</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -46,8 +46,9 @@
           @foreach ($datas as $data)
             <tr>
               <td>{{ $data->id }}</td>
-              <td>{{ $data->mapel->mapel }}</td>
               <td>{{ $data->nama_materi }}</td>
+              <td><img class="gambar-mapel" src="{{ asset('storage/' . $data->gambar) }}" alt="Nama Gambar"></td>
+
               @php
                   // Mengubah URL YouTube biasa menjadi embed URL
                   $youtubeEmbedUrl = '';
@@ -66,7 +67,6 @@
               <td>
                 <a href="{{ asset('storage/' . $data->file) }}" target="_blank">View File</a>
               </td>
-              <td>{{ $data->materi }}</td>
               <td>
                   <div class="action-buttons">
                       <a href="/kelMateri/{{ $data->id }}/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Edit</a>

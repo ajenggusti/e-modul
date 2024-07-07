@@ -49,8 +49,7 @@
 </style>
 
 <div class="content">
-    <h1>{{ $data->mapel->mapel }}</h1>
-    <h4>{{ $data->nama_materi }}</h4>
+    <h4>Materi {{ $data->nama_materi }}</h4>
     <div class="video-link">
         {!! $data->link_yt !!}
     </div>

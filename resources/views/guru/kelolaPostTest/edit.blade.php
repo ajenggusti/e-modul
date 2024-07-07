@@ -23,17 +23,6 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label for="mapel">Pilih Mapel</label>
-            <select id="mapel" name="mapel" class="form-control">
-                <option value="">-- Pilih Mapel --</option>
-                @foreach ($mapels as $mapel)
-                    <option value="{{ $mapel->id }}" {{ $posttest->materi->mapel->id == $mapel->id ? 'selected' : '' }}>
-                        {{ $mapel->mapel }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
             <label for="materi">Pilih Materi</label>
             <select id="materi" name="materi" class="form-control">
                 <option value="">-- Pilih Materi --</option>
@@ -82,28 +71,5 @@
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
 </div>
-
-<script>
-    document.getElementById('mapel').addEventListener('change', function() {
-        var mapelId = this.value;
-        var materiSelect = document.getElementById('materi');
-        
-        if (mapelId) {
-            fetch('/getMateri/' + mapelId)
-                .then(response => response.json())
-                .then(data => {
-                    materiSelect.innerHTML = '<option value="">-- Pilih Materi --</option>';
-                    data.forEach(materi => {
-                        materiSelect.innerHTML += `<option value="${materi.id}">${materi.nama_materi}</option>`;
-                    });
-                    materiSelect.disabled = false;
-                })
-                .catch(error => console.error('Error fetching materi:', error));
-        } else {
-            materiSelect.innerHTML = '<option value="">-- Pilih Materi --</option>';
-            materiSelect.disabled = true;
-        }
-    });
-</script>
 
 @endsection

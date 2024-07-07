@@ -24,10 +24,7 @@ class MateriController extends Controller
      */
     public function create()
     {
-        $mapels = Mapel::get();
-        return view('guru.kelolaMateri.form', [
-            'mapels' => $mapels
-        ]);
+        return view('guru.kelolaMateri.form');
     }
 
     /**
@@ -35,30 +32,34 @@ class MateriController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $validatedData = $request->validate([
             'namaMateri' => 'required|string|max:255',
             'linkYt' => 'required|string',
-            'category' => 'required',
-            'materi' => 'nullable|string',
-            'file' => 'required|file|mimes:pdf,doc,docx|max:2048',
+            'file' => 'required|file|mimes:pdf,doc,docx|max:5120', // 5 MB limit
+            'gbr' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ]);
-
+    
         if ($request->hasFile('file')) {
             $fileName = time() . '-' . uniqid() . '.' . $request->file->getClientOriginalExtension();
             $filePath = $request->file->move(public_path('storage/files'), $fileName);
         }
-
+    
+        if ($request->hasFile('gbr')) {
+            $gbrName = time() . '-' . uniqid() . '.' . $request->gbr->getClientOriginalExtension();
+            $gbrPath = $request->gbr->move(public_path('storage/gbr'), $gbrName);
+        }
+    
         $materi = new Materi();
         $materi->nama_materi = $validatedData['namaMateri'];
         $materi->link_yt = $validatedData['linkYt'];
-        $materi->id_mapel = $validatedData['category'];
-        $materi->materi = $validatedData['materi'];
         $materi->file = 'files/' . $fileName;
+        $materi->gambar = 'gbr/' . $gbrName;
         $materi->save();
-
+    
         return redirect('/kelMateri')->with('success', 'Materi created successfully!');
     }
-
+    
 
 
     /**
@@ -88,29 +89,45 @@ class MateriController extends Controller
         $validatedData = $request->validate([
             'namaMateri' => 'required|string|max:255',
             'linkYt' => 'required|string',
-            'category' => 'required',
-            'materi' => 'nullable|string',
-            'file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+            'file' => 'nullable|file|mimes:pdf,doc,docx|max:5120',
+            'gbr' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ]);
-
+    
         $materi = Materi::findOrFail($id);
-
         $materi->nama_materi = $validatedData['namaMateri'];
         $materi->link_yt = $validatedData['linkYt'];
-        $materi->id_mapel = $validatedData['category'];
-        $materi->materi = $validatedData['materi'];
-
+    
         if ($request->hasFile('file')) {
             $fileName = time() . '-' . uniqid() . '.' . $request->file->getClientOriginalExtension();
-            $filePath = $request->file->move(public_path('storage/files'), $fileName);
+            $filePath = $request->file->storeAs('public/files', $fileName);
+    
+            $oldFile = storage_path('app/public/' . $materi->file);
+            if (file_exists($oldFile)) {
+                unlink($oldFile);
+            }
+    
             $materi->file = 'files/' . $fileName;
         }
-
+    
+        if ($request->hasFile('gbr')) {
+            $image = time() . '-' . uniqid() . '.' . $request->gbr->getClientOriginalExtension();
+            $filePath = $request->gbr->storeAs('public/gambars', $image);
+    
+            $oldImage = storage_path('app/public/' . $materi->gambar);
+            if (file_exists($oldImage)) {
+                unlink($oldImage);
+            }
+    
+            $materi->gambar = 'gambars/' . $image;
+        }
+    
         $materi->save();
-
+    
         return redirect('/kelMateri')->with('success', 'Materi updated successfully!');
     }
-
+    
+    
+    
     /**
      * Remove the specified resource from storage.
      */
@@ -118,14 +135,22 @@ class MateriController extends Controller
     {
         $materi = Materi::findOrFail($id);
     
+        // Delete the file
         $filePath = public_path('storage/' . $materi->file);
-    
         if (file_exists($filePath)) {
             unlink($filePath);
         }
     
+        // Delete the image
+        $imagePath = public_path('storage/' . $materi->gambar);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+    
+        // Delete the materi record
         $materi->delete();
     
         return redirect('/kelMateri')->with('success', 'Materi deleted successfully!');
     }
+    
 }

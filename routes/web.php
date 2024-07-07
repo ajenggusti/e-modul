@@ -60,7 +60,8 @@ Route::resource('/kelMapel', MapelController::class)->except('show');
 
 // halaman home
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/detailMapel/{id}', [HomeController::class, 'detailMapel']);
+Route::get('/materi', [HomeController::class, 'menuMateri']);
+Route::get('/detailMateri', [HomeController::class, 'detailMapel']);
 Route::get('/preMateriPost/{id}', [HomeController::class, 'preMateriPost'])->name('preMateriPost');
 Route::get('/aksesMateri/{id}', [HomeController::class, 'aksesMateri']);
 

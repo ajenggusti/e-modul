@@ -67,23 +67,17 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="category">Category</label>
-                                            <select name="category" class="form-control @error('category') is-invalid @enderror" id="category">
-                                                @foreach($mapels as $mapel)
-                                                    <option value="{{ $mapel->id }}" {{ old('category') == $mapel->id ? 'selected' : '' }}>{{ $mapel->mapel }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('category')
+                                            <label for="gambar">Gambar</label>
+                                            <input type="file" name="gbr" class="form-control @error('gbr') is-invalid @enderror" id="gambar" onchange="previewImage(event)">
+                                            @error('gbr')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="materi" class="form-label">Materi <small style="color: rgb(255, 0, 0); font-weight: bold;">*</small></label>
-                                            <textarea name="materi" id="editor" class="form-control @error('materi') is-invalid @enderror">{{ old('materi') }}</textarea>
-                                            @error('materi')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                        <div class="form-group">
+                                            <label for="preview">Preview Gambar</label>
+                                            <img id="imagePreview" src="#" alt="Preview Gambar" style="display: none; max-width: 100%; height: auto;">
                                         </div>
+                                    
                                     </div>
                                     <!-- /.card-body -->
 
@@ -101,4 +95,29 @@
         </div>
         <!-- /.content-wrapper -->
     </div>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
+            
+            reader.onload = function(){
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = reader.result;
+                imagePreview.style.display = 'block';
+            }
+            
+            if(input.files && input.files[0]){
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Display previously uploaded image if it exists
+        @if(old('gbr'))
+            document.addEventListener('DOMContentLoaded', function() {
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = "{{ old('gbr') }}";
+                imagePreview.style.display = 'block';
+            });
+        @endif
+    </script>
 @endsection

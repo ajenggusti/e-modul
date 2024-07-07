@@ -56,7 +56,7 @@
     </ul>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    {{-- <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
@@ -175,7 +175,7 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
-    </ul>
+    </ul> --}}
   </nav>
   <!-- /.navbar -->
 
@@ -212,14 +212,14 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="/kelMapel" class="nav-link">
               <i class="fa-solid fa-brain"></i>
               <p>
                 Kelola Mata Pelajaran
               </p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a href="/kelMateri" class="nav-link">
               <i class="fa-solid fa-book"></i>

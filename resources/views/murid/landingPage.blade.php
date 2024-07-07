@@ -77,7 +77,7 @@
             </div>
         </section>
     
-        <!--  TESTIMONIAL AREA -->
+        {{-- <!--  TESTIMONIAL AREA -->
         <section class="testimonial-area">
             <div class="container">
                 <div class="section-title text-center mb-50">
@@ -132,27 +132,7 @@
                     <img data-aos="fade-down" data-aos-easing="linear" class="mask7" src="{{ asset('poco/assets/img/mask/penta-02.svg') }}" alt="mask" />
                 </div>
             </div>
-        </section>
-    
-        <!-- Tombol Logout dan Dashboard -->
-        <div class="container mt-3">
-            <div class="row justify-content-end">
-                <div class="col-auto">
-                    @if (Auth::check())
-                        @if (Auth::user()->level == 'guru')
-                            <a href="/dbGuru" class="btn btn-primary">Dashboard</a>
-                        @endif
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                           class="btn btn-danger ml-2">Logout</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    @endif
-                </div>
-            </div>
-        </div>
-
+        </section> --}}
     </main>
 </body>
 </html>
