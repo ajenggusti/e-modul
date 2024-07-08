@@ -35,7 +35,11 @@ use App\Http\Controllers\Auth\RegisterController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/dbGuru', [DashboardController::class, 'index']);
+
+Route::middleware('check.role:guru')->group(function () {
+    Route::get('/dbGuru', [DashboardController::class, 'index']);
+});
+
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
 // route login
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
