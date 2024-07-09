@@ -60,6 +60,18 @@
     .material-item a:hover {
         background-color: #c70060;
     }
+
+    /* Media query for mobile devices */
+    @media (max-width: 768px) {
+        .material-item {
+            width: calc(50% - 20px);
+        }
+    }
+    @media (max-width: 480px) {
+        .material-item {
+            width: 100%;
+        }
+    }
 </style>
 
 <div class="content">

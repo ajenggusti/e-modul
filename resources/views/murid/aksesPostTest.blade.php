@@ -20,7 +20,7 @@
             border-radius: 8px;
             text-align: center;
         }
-        h1 {
+        h4 {
             color: #ff66b2;
             margin-bottom: 20px;
         }
@@ -62,7 +62,7 @@
 </head>
 <body>
     <div class="content">
-        <h1>Kerjakan soal dibawah ini!</h1>
+        <h4>Kerjakan soal dibawah ini!</h4>
 
         @if($datas->isEmpty())
             <p class="no-posttests">Soal belum tersedia.</p>

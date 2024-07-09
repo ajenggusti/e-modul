@@ -72,28 +72,30 @@
                         <div class="close-sidebar"><span></span><span></span></div>
                         <div class="logo">
                             <a href="index.html">
-                                <img src="{{ asset('poco/assets/img/logo/logo.png') }}" alt="logo" />
                             </a>
                         </div>
-                        <form class="asidesearch-bar">
-                            <input type="text" name="search" />
-                            <img src="{{ asset('poco/assets/img/logo/search.svg')}}" alt="search logo" />
-                        </form>
                         <ul class="main-menu">
-                            <li>
-                                <a class="active" href="index.html">Home</a>
-                            </li>
-                            <li><a href="services.html">Mata Pelajaran</a></li>
-                            <li><a href="about-us.html">Nilai</a></li>
-                            <li><a href="project.html">Portfolio</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            @if (Auth::check())
+                                @if (Auth::user()->level == 'guru')
+                                    <a href="/dbGuru" class="primary__button primary__button-bgBlack">Dashboard</a>
+                                @endif
+                            <li><a href="/detailMateri">Materi</a></li>
+                            <li><a href="/riwayat">Riwayat</a></li>
+                            <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                    class="primary__button primary__button-bgBlack ml-2">Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            @else
                         </ul>
-                        <a class="primary__button primary__button-bgBlack contacprimary__button" href="tel:+987 45478 547">
+                        <a class="primary__button primary__button-bgBlack contacprimary__button" href="/login">
                             Login
                         </a>
-                        <a class="primary__button primary__button-bgBlack contacprimary__button" href="tel:+987 45478 547">
+                        <a class="primary__button primary__button-bgBlack contacprimary__button" href="/register">
                             Register
                         </a>
+                        @endif
                     </div>
                     <div class="overlay"></div>
                 </aside>
@@ -112,109 +114,7 @@
         </header>
 
         @yield('content')
-        
-        {{-- <!--  FOOTER AREA -->
-        <footer>
-            <div class="footer-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 order-lg-0 order-4">
-                            <div class="footer-area-about mb-50" data-aos="fade-up">
-                                <h4>About Us</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut scelerisque arcu, at porttitor lacus. Integer.
-                                </p>
-                                <div class="footer-area-links">
-                                    <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
-                                    <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mr-lg-65 col-md-4 col-6 order-lg-0 order-md-1">
-                            <div class="footer-area-lists mb-30" data-aos="fade-up" data-aos-delay="300">
-                                <h4>Company</h4>
-                                <ul>
-                                    <li>
-                                        <a href="about-us.html">About us</a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Contact us</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Careers</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Press</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mr-lg-65 col-md-4 col-6 order-lg-0 order-2">
-                            <div class="footer-area-lists mb-30" data-aos="fade-up" data-aos-delay="400">
-                                <h4>Products</h4>
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0)">Features</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Pricing</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">News</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Help desk</a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Support</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6 order-lg-0 order-md-3">
-                            <div class="footer-area-lists" data-aos="fade-up" data-aos-delay="500">
-                                <h4>Legal</h4>
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0)">Privacy Policy</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Terms & Conditions</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">Return Policy</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-area-shape">
-                    <img data-aos="fade-down" data-aos-easing="linear" data-aos-delay="600" src="{{ asset('poco/assets/img/mask/penta-02.svg') }}" alt="shape" class="img-fluid ft-shape-01" />
-                    <img data-aos="fade-down" data-aos-easing="linear" data-aos-delay="700" src="{{ asset('poco/assets/img/mask/downShape.svg') }}" alt="shape" class="img-fluid ft-shape-02" />
-                    <img data-aos="fade-left" data-aos-easing="linear" data-aos-delay="500" src="{{ asset('poco/assets/img/mask/circle-01.svg') }}" alt="shape" class="img-fluid ft-shape-03" />
-                </div>
-            </div>
-            <!-- copyright area -->
-            <div class="copyright">
-                <div class="container">
-                    <div class="row align-items-center copyright-area">
-                        <div class="col-lg-5 col-md-4 col-sm-12">
-                            <div class="copyright-area-text">
-                                <p>Copyright 2024. Intan Sukma Junia - 200631100040!</p>
-                            </div>
-                        </div>
 
-                        <div class="col-lg-5 col-md-4 col-sm-12">
-                            <div class="copyright-area-top text-lg-right">
-                                <a href="#header" id="to-top">Back to Top <i class="fas fa-angle-up"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer> --}}
         <!-- JS here -->
         <script src="{{ asset('poco/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
         <script src="{{ asset('poco/assets/js/popper.min.js') }}"></script>
@@ -229,7 +129,7 @@
         <script> 
         /* magnificPopup video view*/
             $('.popup-video').magnificPopup({
-              type: 'iframe',
+                type: 'iframe',
             });
         </script>
     </body>

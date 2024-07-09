@@ -16,16 +16,13 @@
         border-radius: 8px;
         text-align: center;
     }
-    h1 {
-        color: #ff66b2;
-        margin-bottom: 10px;
-    }
     h4 {
         color: #ff66b2;
         margin-bottom: 20px;
     }
-    .video-link {
-        margin-bottom: 20px;
+    .video-link iframe {
+        width: 100%;
+        height: 450px;
     }
     hr {
         border: 1px solid #ff66b2;
@@ -45,6 +42,18 @@
     }
     .download-link:hover {
         background-color: #e60073;
+    }
+
+    /* Media query for mobile devices */
+    @media (max-width: 768px) {
+        .video-link iframe {
+            height: 300px;
+        }
+    }
+    @media (max-width: 480px) {
+        .video-link iframe {
+            height: 200px;
+        }
     }
 </style>
 

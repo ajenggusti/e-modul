@@ -18,7 +18,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
-        h1 {
+        h4 {
             text-align: center;
             color: #ff66b2;
         }
@@ -60,7 +60,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Riwayat Nilai</h1>
+        <h4>Riwayat Nilai</h4>
 
         @if (session('success') )
             <div class="alert alert-success alert-dismissible fade show" role="alert">

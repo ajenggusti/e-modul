@@ -45,9 +45,10 @@
         <tbody>
           @foreach ($datas as $data)
             <tr>
-              <td>{{ $data->id }}</td>
+              <td>{{ $loop->iteration }}</td>
               <td>{{ $data->nama_materi }}</td>
               <td><img class="gambar-mapel" src="{{ asset('storage/' . $data->gambar) }}" alt="Nama Gambar"></td>
+              {{-- <td><img class="gambar-mapel" src="{{ asset( $data->gambar) }}" alt="Nama Gambar"></td> --}}
 
               @php
                   // Mengubah URL YouTube biasa menjadi embed URL
