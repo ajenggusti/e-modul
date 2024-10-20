@@ -37,6 +37,7 @@
             <th>Nama Materi </th>
             <th>Gambar sampul </th>
             <th>Video Pembelajaran</th>
+            <th>Link youtube</th>
             <th>File</th>
             <th>Action</th>
           </tr>
@@ -60,11 +61,12 @@
               @endphp
               <td>
                 @if ($youtubeEmbedUrl)
-                    <iframe width="100" height="50" src="{{ $youtubeEmbedUrl }}" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100" height="80" src="{{ $youtubeEmbedUrl }}" frameborder="0" allowfullscreen></iframe>
                 @else
-                    Invalid YouTube link
+                    link youtube tidak valid
                 @endif
               </td>
+              <td><a href="{{ $data->yt }}">{{ $data->yt }}</a></td>
               <td>
                 <a href="{{ asset('storage/' . $data->file) }}" target="_blank">View File</a>
               </td>

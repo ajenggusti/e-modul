@@ -5,13 +5,13 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Detail Post Test</h1>
+        <h1 class="m-0">Detail Test Akhir</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="/dbGuru">Dashboard</a></li>
-          <li class="breadcrumb-item"><a href="/kelPosttest">Kelola Post Test</a></li>
-          <li class="breadcrumb-item active">Detail Post Test</li>
+          <li class="breadcrumb-item"><a href="/kelPosttest">Kelola Test Akhir</a></li>
+          <li class="breadcrumb-item active">Detail Test Akhir</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->

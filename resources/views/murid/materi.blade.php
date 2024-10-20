@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: Arial, sans-serif;
-        background-color: #ffe6f0;
+        background-color: #e0e0e0;
         color: #333;
     }
     .content {
@@ -23,14 +23,14 @@
         display: block;
         padding: 10px;
         margin: 10px 0;
-        background-color: #ff66b2;
+        background-color: #242775;
         color: #fff;
         text-decoration: none;
         border-radius: 5px;
         transition: background-color 0.3s;
     }
     .link-container a:hover {
-        background-color: #e60073;
+        background-color: #777;
     }
 </style>
 
@@ -43,20 +43,20 @@
     @endif
     <div class="link-container">
         @if($pretestCompleted)
-            <a href="/aksesMateri/{{ $data->id }}">Lihat Materi</a>
-            <a href="/aksesPostTest/{{ $data->id }}">Kerjakan posttest</a>
+            <a href="/aksesMateri/{{ $data->id }}">Lihat Materi {{$data->nama_materi}}</a>
+            <a href="/aksesPostTest/{{ $data->id }}">Kerjakan Test Akhir {{$data->nama_materi}}</a>
         @else
             <a href="{{ route('kelPretest.create') }}?id={{ $data->id }}">
-                Kerjakan Pretest terlebih dahulu pada {{ $data->nama_materi }}
+                Kerjakan Test Awal Terlebih Dahulu Pada {{ $data->nama_materi }}
             </a>
-            <a onclick="showAlert()" href="#">Lihat Materi</a>
-            <a onclick="showAlert()" href="#">Kerjakan posttest</a>
+            <a onclick="showAlert()" href="#">Lihat Materi {{$data->nama_materi}}</a>
+            <a onclick="showAlert()" href="#">Kerjakan Test Akhir {{$data->nama_materi}}</a>
         @endif
     </div>
 </div>
 <script>
     function showAlert() {
-        alert("Kamu belum bisa mengakses, kerjakan pretest terlebih dahulu.");
+        alert("Kamu belum bisa mengakses, kerjakan test awal terlebih dahulu.");
     }
 </script>
 @endsection

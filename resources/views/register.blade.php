@@ -12,18 +12,18 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
-    <title>Register</title>
+    <title>Daftar</title>
 </head>
 <body>
     <div class="flex-r container">
         <div class="flex-r login-wrapper">
             <div class="login-text">
-                <h1>Register</h1>
+                <h1>Daftar</h1>
 
                 <form class="flex-c" method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="input-box">
-                        <span class="label">Name</span>
+                        <span class="label">Nama</span>
                         <div class="flex-r input">
                             <input type="text" name="name" placeholder="Your Name" required>
                             <i class="fas fa-user"></i>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="input-box">
-                        <span class="label">E-mail</span>
+                        <span class="label">Alamat Email</span>
                         <div class="flex-r input">
                             <input type="email" name="email" placeholder="name@abc.com" required>
                             <i class="fas fa-at"></i>
@@ -58,10 +58,10 @@
                         </div>
                     </div>
 
-                    <input class="btn" type="submit" value="Create an Account">
+                    <input class="btn" type="submit" value="Buat Akun">
                     <span class="extra-line">
                         <span>Sudah mempunyai akun?</span>
-                        <a href="/login">Login</a>
+                        <a href="/login">Masuk</a>
                     </span>
                 </form>
             </div>

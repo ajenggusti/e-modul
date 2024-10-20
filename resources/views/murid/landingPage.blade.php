@@ -51,7 +51,7 @@
                                 E-Modul
                             </h1>
                             <p class="bannerArea__brief">
-                                Cerdas bersama, sukses bersama SMK Negeri 1 Labang...
+                                Cerdas Bersama SMK Negeri 1 Labang.
                             </p>
                         </div>
                     </div>
@@ -67,13 +67,6 @@
                     <img class="mask3" src="{{ asset('poco/assets/img/mask/downShape.png')}}" alt="mask" />
                     <img class="mask4" src="{{ asset('poco/assets/img/mask/layers-dot.png')}}" alt="mask" />
                 </div>
-            </div>
-        </section>
-
-        <!--  CALL TO ACTION AREA -->
-        <section class="callto-action">
-            <div class="callto-action-mask" >
-                <img data-aos="fade-down" data-aos-easing="linear" src="{{ asset('poco/assets/img/mask/leftMask.svg') }}" alt="Icon" class="img-fluid first-mask" />
             </div>
         </section>
 

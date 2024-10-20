@@ -8,20 +8,20 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #ffe6f0;
-            color: #333;
+            background-color: #f2f2f2; /* Light grey background */
+            color: #333; /* Dark grey text */
         }
         .content {
             width: 80%;
             margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: #fff; /* White content background */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             text-align: center;
         }
         h4 {
-            color: #ff66b2;
+            color: #4e2e53; /* Purple color for headings */
             margin-bottom: 20px;
         }
         .question {
@@ -29,7 +29,8 @@
             text-align: left;
         }
         .question p {
-            color: #ff66b2;
+            color: #333; /* Dark grey text for questions */
+            font-weight: bold; /* Bold font weight */
         }
         .question label {
             display: block;
@@ -39,12 +40,12 @@
             margin-right: 10px;
         }
         .no-posttests {
-            color: #ff66b2;
+            color: #4e2e53; /* Purple color for no posttests message */
         }
         button {
-            background-color: #ff66b2;
+            background-color: #4e2e53; /* Purple button background */
             border: none;
-            color: white;
+            color: white; /* White text color */
             padding: 10px 20px;
             text-align: center;
             text-decoration: none;
@@ -56,7 +57,7 @@
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #e60073;
+            background-color: #5f3c6b; /* Darker purple on hover */
         }
     </style>
 </head>
@@ -90,12 +91,12 @@
                             {{ $data->d }}
                         </label>
                         <label>
-                            <input type="radio" name="answers[{{ $data->id }}]}" value="e">E. 
+                            <input type="radio" name="answers[{{ $data->id }}]" value="e">E. 
                             {{ $data->e }}
                         </label>
                     </div>
                 @endforeach
-                <button type="submit">Submit</button>
+                <button type="submit">Kirim</button>
             </form>
         @endif
     </div>

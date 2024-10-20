@@ -20,7 +20,7 @@
   </div><!-- /.container-fluid -->
 </div>
 <div class="mb-3">
-  <a href="{{ route('laporan.export') }}" class="btn btn-success"><i class="bi bi-file-excel"></i> Export to Excel</a>
+  <a href="{{ route('laporan.export') }}" class="btn btn-success"><i class="bi bi-file-excel"></i> Expor ke Excel</a>
 </div>  
 @if (session('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -45,7 +45,7 @@
         <tbody>
           @foreach ($datas as $data)
             <tr>
-              <td>{{ $data->id }}</td>
+              <td>{{ $loop->iteration }}</td>
               <td>{{ $data->user->name}}</td>
               <td>{{ $data->materi->nama_materi}}</td>
               <td>{{ $data->nilai}}</td>

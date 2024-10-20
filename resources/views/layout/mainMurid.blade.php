@@ -54,13 +54,13 @@
                                 @endif
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                    class="primary__button primary__button-bgBlack ml-2">Logout</a>
+                                    class="primary__button primary__button-bgBlack ml-2">Keluar</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             @else
-                                <a class="primary__button primary__button-bgBlack" href="/login">Login</a>
-                                <a class="primary__button primary__button-bgBlack" href="/register">Register</a>
+                                <a class="primary__button primary__button-bgBlack" href="/login">Masuk</a>
+                                <a class="primary__button primary__button-bgBlack" href="/register">Daftar</a>
                             @endif
                         </div>
                     </div>
@@ -83,17 +83,17 @@
                             <li><a href="/riwayat">Riwayat</a></li>
                             <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                    class="primary__button primary__button-bgBlack ml-2">Logout</a>
+                                    class="primary__button primary__button-bgBlack ml-2">Keluar</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             @else
                         </ul>
                         <a class="primary__button primary__button-bgBlack contacprimary__button" href="/login">
-                            Login
+                            Masuk
                         </a>
                         <a class="primary__button primary__button-bgBlack contacprimary__button" href="/register">
-                            Register
+                            Daftar
                         </a>
                         @endif
                     </div>
@@ -129,7 +129,7 @@
         <script> 
         /* magnificPopup video view*/
             $('.popup-video').magnificPopup({
-                type: 'iframe',
+              type: 'iframe',
             });
         </script>
     </body>

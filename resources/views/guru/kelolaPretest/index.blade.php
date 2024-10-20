@@ -5,12 +5,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Kelola Pre-Test</h1>
+        <h1 class="m-0">Kelola Test Awal</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="/dbGuru">Dashboard</a></li>
-          <li class="breadcrumb-item active">Kelola Pre-Test</li>
+          <li class="breadcrumb-item active">Kelola Test Awal</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -34,14 +34,14 @@
             <th>id</th>
             <th>Nama</th>
             <th>Materi</th>
-            <th>Jawaban Pretest</th>
+            <th>Jawaban Test Awal</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($datas as $data)
             <tr>
-              <td>{{ $data->id }}</td>
+              <td>{{ $loop->iteration }}</td>
               <td>{{ $data->user->name }}</td>
               <td>{{ $data->materi->nama_materi }}</td>
               <td>{{ $data->jawaban }}</td>

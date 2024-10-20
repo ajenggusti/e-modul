@@ -25,8 +25,8 @@
 <body>
     <div class="centered">
         <img src="/img/403.png" alt="403 Forbidden">
-        <p>Unauthorized action. You do not have permission to access this page.</p>
-        <p><a href="/">Go to Home</a></p>
+        <p>Ups halaman ini tidak bisa diakses.</p>
+        <p><a href="/">Kembali ke halaman Home.</a></p>
     </div>
 </body>
 </html>

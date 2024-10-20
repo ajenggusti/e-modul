@@ -47,9 +47,16 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="linkYt">Link YT</label>
+                                        <label for="linkYt">Link YT (Iframe)</label>
                                         <input type="text" name="linkYt" class="form-control @error('linkYt') is-invalid @enderror" id="linkYt" placeholder="Enter linkYt" value="{{ old('linkYt', $materi->link_yt) }}">
                                         @error('linkYt')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="yt">Link YT (URL)</label>
+                                        <input type="text" name="yt" class="form-control @error('yt') is-invalid @enderror" id="yt" placeholder="Enter yt" value="{{ old('yt', $materi->yt) }}">
+                                        @error('yt')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -59,7 +66,7 @@
                                         @error('file')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
-                                        <small>Leave blank if you do not want to change the file.</small>
+                                        <small>Kosongi saja jika tidak ingin mengganti file.</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="gambar">Gambar</label>

@@ -34,7 +34,7 @@
 
   <div class="form-group">
     <label for="nama">Nama</label>
-    <input type="text" name="nama" class="form-control" value="{{ $user->nama }}" required>
+    <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
   </div>
 
   <div class="form-group">
@@ -46,18 +46,13 @@
     <label for="level">Level</label>
     <select name="level" class="form-control" required>
       <option value="guru" {{ $user->level == 'guru' ? 'selected' : '' }}>Guru</option>
-      <option value="siswa" {{ $user->level == 'siswa' ? 'selected' : '' }}>Siswa</option>
+      <option value="murid" {{ $user->level == 'murid' ? 'selected' : '' }}>Murid</option>
     </select>
   </div>
 
   <div class="form-group">
-    <label for="absen">Absen</label>
-    <input type="text" name="absen" class="form-control" value="{{ $user->absen }}" required>
-  </div>
-
-  <div class="form-group">
-    <label for="nip">NIP</label>
-    <input type="text" name="nip" class="form-control" value="{{ $user->nip }}" required>
+    <label for="absen">Nomor Identitas</label>
+    <input type="text" name="absen" class="form-control" value="{{ $user->nomor_identitas }}" required>
   </div>
 
   <button type="submit" class="btn btn-primary">Update</button>

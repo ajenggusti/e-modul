@@ -35,26 +35,24 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
+            'name' => 'required',
             'email' => 'required|email',
             'password' => 'sometimes|nullable|min:8',
             'level' => 'required',
             'absen' => 'required',
-            'nip' => 'required',
         ]);
     
         $user = User::find($id);
-        $user->name = $request->nama;
+        $user->name = $request->name;
         $user->email = $request->email;
         if ($request->password) {
             $user->password = Hash::make($request->password);
         }
         $user->level = $request->level;
-        $user->absen = $request->absen;
-        $user->nip = $request->nip;
+        $user->nomor_identitas = $request->absen;
         $user->save();
     
-        return redirect()->route('kelUser.index')->with('success', 'User updated successfully');
+        return redirect()->route('kelUser.index')->with('success', 'User berhasil diupdate.');
     }
     
 

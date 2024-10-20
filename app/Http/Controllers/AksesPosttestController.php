@@ -6,7 +6,6 @@ use App\Models\Nilai;
 use App\Models\Jawaban;
 use App\Models\Posttest;
 use Illuminate\Http\Request;
-
 class AksesPosttestController extends Controller
 {
     public function index($id)
@@ -17,7 +16,7 @@ class AksesPosttestController extends Controller
 
     public function submitPostTest(Request $request)
     {
-        $userId = auth()->id();
+        $userId = auth()->id(); 
         $idMateri = $request->input('id_materi');
         $answers = $request->input('answers');
 

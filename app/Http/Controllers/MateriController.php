@@ -32,34 +32,35 @@ class MateriController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $validatedData = $request->validate([
             'namaMateri' => 'required|string|max:255',
             'linkYt' => 'required|string',
-            'file' => 'required|file|mimes:pdf,doc,docx|max:10240', // 5 MB limit
+            'yt' => 'required|string',
+            'file' => 'required|file|mimes:pdf,doc,docx|max:10240', // 10 MB limit
             'gbr' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ]);
-    
+
         if ($request->hasFile('file')) {
             $fileName = time() . '-' . uniqid() . '.' . $request->file->getClientOriginalExtension();
             $filePath = $request->file->move(public_path('storage/gbr'), $fileName);
         }
-    
+
         if ($request->hasFile('gbr')) {
             $gbrName = time() . '-' . uniqid() . '.' . $request->gbr->getClientOriginalExtension();
             $gbrPath = $request->gbr->move(public_path('storage/gbr'), $gbrName);
         }
-    
+
         $materi = new Materi();
         $materi->nama_materi = $validatedData['namaMateri'];
         $materi->link_yt = $validatedData['linkYt'];
+        $materi->yt = $validatedData['yt'];
         $materi->file = 'gbr/' . $fileName;
         $materi->gambar = 'gbr/' . $gbrName;
         $materi->save();
-    
-        return redirect('/kelMateri')->with('success', 'Materi created successfully!');
+
+        return redirect('/kelMateri')->with('success', 'Data Materi telah berhasil dibuat!');
     }
-    
+
 
 
     /**
@@ -89,6 +90,7 @@ class MateriController extends Controller
         $validatedData = $request->validate([
             'namaMateri' => 'required|string|max:255',
             'linkYt' => 'required|string',
+            'yt' => 'required|string',
             'file' => 'nullable|file|mimes:pdf,doc,docx|max:10240',
             'gbr' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ]);
@@ -96,6 +98,7 @@ class MateriController extends Controller
         $materi = Materi::findOrFail($id);
         $materi->nama_materi = $validatedData['namaMateri'];
         $materi->link_yt = $validatedData['linkYt'];
+        $materi->yt = $validatedData['yt'];
     
         if ($request->hasFile('file')) {
             $fileName = time() . '-' . uniqid() . '.' . $request->file->getClientOriginalExtension();
@@ -123,8 +126,9 @@ class MateriController extends Controller
     
         $materi->save();
     
-        return redirect('/kelMateri')->with('success', 'Materi updated successfully!');
+        return redirect('/kelMateri')->with('success', 'Data Materi berhasil diedit!');
     }
+    
     
     
     
@@ -150,7 +154,7 @@ class MateriController extends Controller
         // Delete the materi record
         $materi->delete();
     
-        return redirect('/kelMateri')->with('success', 'Materi deleted successfully!');
+        return redirect('/kelMateri')->with('success', 'Data Materi berhasil di hapus');
     }
     
 }

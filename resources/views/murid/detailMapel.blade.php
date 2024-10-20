@@ -4,7 +4,7 @@
 <style>
     body {
         font-family: Arial, sans-serif;
-        background-color: #ffe6f0;
+        background-color: #e0e0e0;
         color: #333;
     }
     .content {
@@ -17,7 +17,7 @@
     }
     h3 {
         text-align: center;
-        color: #ff66b2;
+        color: #242775;
     }
     .material-list {
         display: flex;
@@ -26,8 +26,8 @@
     }
     .material-item {
         width: calc(33.333% - 20px);
-        background-color: #f7e1ec;
-        color: #fff;
+        background-color: #f0f0f0; 
+        color: #333; 
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -51,14 +51,14 @@
     .material-item a {
         display: inline-block;
         padding: 10px 20px;
-        background-color: #e60073;
+        background-color: #242775;
         color: #fff;
         text-decoration: none;
         border-radius: 5px;
         transition: background-color 0.3s;
     }
     .material-item a:hover {
-        background-color: #c70060;
+        background-color: #777; 
     }
 
     /* Media query for mobile devices */
